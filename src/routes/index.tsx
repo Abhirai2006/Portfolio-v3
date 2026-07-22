@@ -367,7 +367,7 @@ function Projects() {
 function AskSection() {
   return (
     <section id="ask" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="06" title="Ask Abhishek" />
+      <ChapterHeader n="05" title="Ask Abhishek" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Recruiter in a hurry? Skip the scroll — ask the AI trained on my resume and projects. Answers stay grounded
         in my actual background.
@@ -401,7 +401,7 @@ function AnimeShelf() {
   ];
   return (
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="07" title="Side Quest · Anime Shelf" />
+      <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
         <Kpi k="53" sub="Series" />
         <Kpi k="3,622" sub="Episodes" />
@@ -449,7 +449,7 @@ function Devlog() {
   ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="08" title="Devlog" />
+      <ChapterHeader n="07" title="Devlog" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Most students hide their bugs. I write about mine.
       </p>
@@ -475,7 +475,7 @@ function Devlog() {
 function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="09" title="Let's Build Something" />
+      <ChapterHeader n="08" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="rounded-2xl border border-border bg-black/60 font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
