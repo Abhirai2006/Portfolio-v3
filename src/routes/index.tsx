@@ -4,6 +4,17 @@ import { Nav } from "@/components/portfolio/Nav";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
+import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import portrait from "@/assets/abhishek-portrait.jpg.asset.json";
+import muse1 from "@/assets/projects/muse-1.png.asset.json";
+import muse2 from "@/assets/projects/muse-2.png.asset.json";
+import muse3 from "@/assets/projects/muse-3.png.asset.json";
+import sort1 from "@/assets/projects/sort-1.png.asset.json";
+import sort2 from "@/assets/projects/sort-2.png.asset.json";
+import sort3 from "@/assets/projects/sort-3.png.asset.json";
+import bs1 from "@/assets/projects/bs-1.png.asset.json";
+import bs2 from "@/assets/projects/bs-2.png.asset.json";
+import bs3 from "@/assets/projects/bs-3.png.asset.json";
 
 const HeroScene = lazy(() =>
   import("@/components/portfolio/HeroScene").then((m) => ({ default: m.HeroScene })),
@@ -34,6 +45,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div id="top" className="min-h-screen bg-background text-foreground grain">
+      <CursorGlow />
       <Nav />
       <Hero />
       <Origin />
@@ -62,7 +74,7 @@ function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-32 pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
-        <div className="lg:col-span-2 max-w-4xl">
+        <div className="max-w-4xl">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
             <span className="h-px w-8 bg-primary" />
             Chapter 00 · Portfolio / 2026
@@ -106,6 +118,19 @@ function Hero() {
             <Kpi k="IV" sub="Semester" />
             <Kpi k="4+" sub="Shipped projects" />
           </dl>
+        </div>
+        <div className="hidden lg:flex justify-center">
+          <div className="relative">
+            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/40 via-accent/20 to-destructive/30 blur-2xl opacity-60" />
+            <img
+              src={portrait.url}
+              alt="Abhishek Rai A"
+              className="relative h-[420px] w-[320px] object-cover rounded-[2rem] border border-border shadow-2xl grayscale-[0.15]"
+            />
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-border bg-background/90 backdrop-blur px-4 py-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground whitespace-nowrap">
+              <span className="text-primary">●</span> abhishek · mysuru
+            </div>
+          </div>
         </div>
       </div>
 
@@ -295,7 +320,8 @@ function Projects() {
       tag: "Full-stack · SSR · Auth",
       body: "USN-verified anonymous grievance platform. Peer-voted complaints auto-escalate into formal PDF letters. Supabase RLS + security-definer RPCs so identities stay server-side. Cloudflare Workers + TanStack Start + React 19. Seeded against 1,159+ verified student IDs.",
       tags: ["TanStack Start", "Supabase RLS", "Cloudflare"],
-      images: [],
+      images: [muse1.url, muse2.url, muse3.url],
+      live: "https://muse-studentsvoice.lovable.app/",
       repo: "https://github.com/Abhirai2006",
     },
     {
@@ -303,7 +329,8 @@ function Projects() {
       tag: "Algorithms · React · TypeScript",
       body: "Deep sorting playground — 5 algorithms, pointer flags, pitch-based sound mode, step-by-step export. Race Mode with live leaderboard, Quiz Mode, Sort DNA personality engine, embeddable /embed widget.",
       tags: ["TypeScript", "React", "Motion"],
-      images: [],
+      images: [sort1.url, sort2.url, sort3.url],
+      live: "https://sort-visually-abhirai2006.lovable.app/",
       repo: "https://github.com/Abhirai2006",
     },
     {
@@ -311,7 +338,8 @@ function Projects() {
       tag: "Vanilla JS · Glassmorphism",
       body: "High-performance visualizer with real-time low/mid/high tracking and interactive audio feedback for each step. Demonstrates O(log n) narrowing visually.",
       tags: ["JavaScript", "Netlify"],
-      images: [],
+      images: [bs1.url, bs2.url, bs3.url],
+      live: "https://binarysearch-abhirai.netlify.app/",
       repo: "https://github.com/Abhirai2006",
     },
     {
