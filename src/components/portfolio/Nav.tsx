@@ -39,10 +39,10 @@ export function Nav() {
           ))}
         </nav>
         <a
-          href="mailto:abhirai2006@gmail.com"
-          className="text-xs font-medium uppercase tracking-widest text-primary hover:underline underline-offset-4"
+          href="#contact"
+          className="rounded-full border border-primary/60 text-primary px-4 py-1.5 text-xs font-semibold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
         >
-          Hire →
+          Hire me →
         </a>
       </div>
     </header>
