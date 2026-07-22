@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getGithubData } from "@/lib/github.functions";
+import { ContributionHeatmap } from "./ContributionHeatmap";
 
 const LANG_COLOR: Record<string, string> = {
   Python: "#3572A5",
@@ -40,6 +41,8 @@ export function GithubLive() {
         <Stat n={data.totals.stars} label="Stars earned" />
         <Stat n={data.totals.followers} label="Followers" />
       </div>
+
+      <ContributionHeatmap />
 
       <div className="grid md:grid-cols-3 gap-6">
         <div className="md:col-span-2 space-y-3">

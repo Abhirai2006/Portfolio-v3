@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
-import { Playground } from "@/components/portfolio/Playground";
 import { GithubLive } from "@/components/portfolio/GithubLive";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 
 const HeroScene = lazy(() =>
   import("@/components/portfolio/HeroScene").then((m) => ({ default: m.HeroScene })),
@@ -41,7 +40,6 @@ function Index() {
       <NowBuilding />
       <Arsenal />
       <GithubSection />
-      <PlaygroundSection />
       <Projects />
       <AskSection />
       <AnimeShelf />
@@ -64,7 +62,7 @@ function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-32 pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
-        <div>
+        <div className="lg:col-span-2 max-w-4xl">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
             <span className="h-px w-8 bg-primary" />
             Chapter 00 · Portfolio / 2026
@@ -88,7 +86,7 @@ function Hero() {
               Ask my AI ↴
             </a>
             <a
-              href="mailto:abhirai2006@gmail.com?subject=Internship%20opportunity"
+              href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
             >
               Hire me
@@ -108,21 +106,6 @@ function Hero() {
             <Kpi k="IV" sub="Semester" />
             <Kpi k="4+" sub="Shipped projects" />
           </dl>
-        </div>
-
-        <div className="relative hidden lg:block">
-          <div className="absolute -inset-4 bg-primary/10 blur-2xl rounded-full" />
-          <img
-            src={heroPortrait}
-            alt="Abhishek Rai A"
-            width={1024}
-            height={1280}
-            className="relative rounded-2xl border border-border w-full object-cover aspect-[4/5] grayscale-[15%]"
-          />
-          <div className="absolute -bottom-4 -left-4 rounded-lg border border-border bg-background/90 backdrop-blur px-4 py-2 font-mono text-[11px] uppercase tracking-widest">
-            <span className="text-primary">●</span> currently building{" "}
-            <span className="text-foreground">movie rec sys</span>
-          </div>
         </div>
       </div>
 
@@ -228,7 +211,7 @@ function NowBuilding() {
       <div className="grid md:grid-cols-3 gap-4">
         <StatusCard tag="Now building" title="Movie Rec System" body="Hybrid content-based + collaborative filtering on ~1M movies. Python · FastAPI · React · scikit-learn." />
         <StatusCard tag="Learning" title="AI & Data Science" body="Ongoing certification via DRISHTI CPS (IIT Indore) — ML fundamentals, workflows, applied AI." />
-        <StatusCard tag="Up next" title="Kaggle · PyTorch" body="Hands-on PyTorch + scikit-learn, first Kaggle submission, then a second small ML system." />
+        <StatusCard tag="Up next" title="DevOps" body="Docker, CI/CD pipelines, and cloud deploys — so my ML systems actually ship, not just train." />
       </div>
     </section>
   );
@@ -304,61 +287,55 @@ function GithubSection() {
   );
 }
 
-/* ---------- PLAYGROUND ---------- */
-function PlaygroundSection() {
-  return (
-    <section id="playground" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="04" title="Interactive Playground" />
-      <p className="mt-6 max-w-2xl text-muted-foreground">
-        Every claim below is a working demo. Draw digits, race a bubble sort, watch a binary search narrow, or drop
-        points and let k-means cluster them.
-      </p>
-      <div className="mt-10">
-        <Playground />
-      </div>
-    </section>
-  );
-}
-
 /* ---------- PROJECTS ---------- */
 function Projects() {
-  const items = [
+  const items: Project[] = [
     {
       title: "MUSE Students Voice",
       tag: "Full-stack · SSR · Auth",
       body: "USN-verified anonymous grievance platform. Peer-voted complaints auto-escalate into formal PDF letters. Supabase RLS + security-definer RPCs so identities stay server-side. Cloudflare Workers + TanStack Start + React 19. Seeded against 1,159+ verified student IDs.",
       tags: ["TanStack Start", "Supabase RLS", "Cloudflare"],
+      images: [],
+      repo: "https://github.com/Abhirai2006",
     },
     {
       title: "O(patience)",
       tag: "Algorithms · React · TypeScript",
       body: "Deep sorting playground — 5 algorithms, pointer flags, pitch-based sound mode, step-by-step export. Race Mode with live leaderboard, Quiz Mode, Sort DNA personality engine, embeddable /embed widget.",
       tags: ["TypeScript", "React", "Motion"],
+      images: [],
+      repo: "https://github.com/Abhirai2006",
     },
     {
       title: "Binary Search Visualizer",
       tag: "Vanilla JS · Glassmorphism",
       body: "High-performance visualizer with real-time low/mid/high tracking and interactive audio feedback for each step. Demonstrates O(log n) narrowing visually.",
       tags: ["JavaScript", "Netlify"],
+      images: [],
+      repo: "https://github.com/Abhirai2006",
     },
     {
       title: "C++ Console Mini-Suite",
       tag: "OOP · Terminal",
       body: "Tic-Tac-Toe (board logic, win/tie), Mini Banking System (validated deposit/withdraw), Rock-Paper-Scissors — reinforcing OOP, arrays, modular design.",
       tags: ["C++", "OOP"],
+      images: [],
+      repo: "https://github.com/Abhirai2006",
     },
   ];
+  const [active, setActive] = useState<Project | null>(null);
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="05" title="The Arsenal" />
+      <ChapterHeader n="04" title="The Arsenal" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
-        Built with curiosity, AI as copilot, and a lot of Stack Overflow.
+        Click any card to open the case file — screenshots, live site, and source code.
       </p>
       <div className="mt-10 grid md:grid-cols-2 gap-4">
         {items.map((p) => (
-          <div
+          <button
             key={p.title}
-            className="group rounded-2xl border border-border bg-card/50 p-6 hover:border-primary transition-colors"
+            onClick={() => setActive(p)}
+            className="group text-left rounded-2xl border border-border bg-card/50 p-6 hover:border-primary hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 transition-all"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -375,9 +352,13 @@ function Projects() {
                 </span>
               ))}
             </div>
-          </div>
+            <div className="mt-4 text-[10px] font-mono uppercase tracking-widest text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+              open case file →
+            </div>
+          </button>
         ))}
       </div>
+      {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
     </section>
   );
 }
@@ -386,7 +367,7 @@ function Projects() {
 function AskSection() {
   return (
     <section id="ask" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="06" title="Ask Abhishek" />
+      <ChapterHeader n="05" title="Ask Abhishek" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Recruiter in a hurry? Skip the scroll — ask the AI trained on my resume and projects. Answers stay grounded
         in my actual background.
@@ -420,7 +401,7 @@ function AnimeShelf() {
   ];
   return (
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="07" title="Side Quest · Anime Shelf" />
+      <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
         <Kpi k="53" sub="Series" />
         <Kpi k="3,622" sub="Episodes" />
@@ -468,7 +449,7 @@ function Devlog() {
   ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="08" title="Devlog" />
+      <ChapterHeader n="07" title="Devlog" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Most students hide their bugs. I write about mine.
       </p>
@@ -494,7 +475,7 @@ function Devlog() {
 function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="09" title="Let's Build Something" />
+      <ChapterHeader n="08" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="rounded-2xl border border-border bg-black/60 font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
