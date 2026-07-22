@@ -1,52 +1,66 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, OrbitControls, Icosahedron, Torus } from "@react-three/drei";
-import { useRef } from "react";
-import type { Group } from "three";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Float, TorusKnot, Points, PointMaterial } from "@react-three/drei";
+import { useMemo, useRef } from "react";
+import * as THREE from "three";
 
-function Shards() {
-  const g = useRef<Group>(null);
+function Knot() {
+  const ref = useRef<THREE.Mesh>(null);
+  const { mouse } = useThree();
   useFrame(({ clock }) => {
-    if (!g.current) return;
-    g.current.rotation.y = clock.getElapsedTime() * 0.15;
-    g.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.2) * 0.1;
+    const m = ref.current;
+    if (!m) return;
+    const t = clock.getElapsedTime();
+    m.rotation.y = t * 0.2 + mouse.x * 0.6;
+    m.rotation.x = Math.sin(t * 0.3) * 0.2 + mouse.y * 0.4;
   });
   return (
-    <group ref={g}>
-      <Float speed={1.4} rotationIntensity={1} floatIntensity={1.2}>
-        <Icosahedron args={[1.6, 1]} position={[0, 0, 0]}>
-          <MeshDistortMaterial
-            color="#c9a84c"
-            emissive="#3a2c0a"
-            emissiveIntensity={0.4}
-            distort={0.35}
-            speed={1.4}
-            metalness={0.9}
-            roughness={0.15}
-            wireframe
-          />
-        </Icosahedron>
-      </Float>
-      <Float speed={0.9} rotationIntensity={0.4} floatIntensity={0.8}>
-        <Torus args={[2.6, 0.02, 16, 128]} rotation={[Math.PI / 2.2, 0.4, 0]}>
-          <meshStandardMaterial color="#c9a84c" emissive="#c9a84c" emissiveIntensity={0.6} />
-        </Torus>
-      </Float>
-      <Float speed={0.6} rotationIntensity={0.3} floatIntensity={0.5}>
-        <Torus args={[3.4, 0.008, 8, 128]} rotation={[Math.PI / 3, 0.9, 0.2]}>
-          <meshBasicMaterial color="#c9a84c" transparent opacity={0.4} />
-        </Torus>
-      </Float>
-      {Array.from({ length: 40 }).map((_, i) => {
-        const a = (i / 40) * Math.PI * 2;
-        const r = 3.2 + (i % 5) * 0.15;
-        return (
-          <mesh key={i} position={[Math.cos(a) * r, Math.sin(a * 2) * 0.8, Math.sin(a) * r]}>
-            <boxGeometry args={[0.04, 0.04, 0.04]} />
-            <meshBasicMaterial color="#c9a84c" />
-          </mesh>
-        );
-      })}
-    </group>
+    <Float speed={1.2} rotationIntensity={0.4} floatIntensity={0.6}>
+      <TorusKnot ref={ref} args={[1.4, 0.36, 220, 32, 2, 3]}>
+        <meshStandardMaterial
+          color="#3b82f6"
+          emissive="#1e3a8a"
+          emissiveIntensity={0.35}
+          metalness={0.85}
+          roughness={0.18}
+          wireframe
+        />
+      </TorusKnot>
+    </Float>
+  );
+}
+
+function Particles({ count = 900 }: { count?: number }) {
+  const positions = useMemo(() => {
+    const arr = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const r = 3 + Math.random() * 5;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      arr[i * 3] = r * Math.sin(p) * Math.cos(t);
+      arr[i * 3 + 1] = r * Math.sin(p) * Math.sin(t);
+      arr[i * 3 + 2] = r * Math.cos(p);
+    }
+    return arr;
+  }, [count]);
+  const ref = useRef<THREE.Points>(null);
+  const { mouse } = useThree();
+  useFrame(({ clock }) => {
+    const p = ref.current;
+    if (!p) return;
+    p.rotation.y = clock.getElapsedTime() * 0.03 + mouse.x * 0.2;
+    p.rotation.x = mouse.y * 0.15;
+  });
+  return (
+    <Points ref={ref} positions={positions} stride={3}>
+      <PointMaterial
+        transparent
+        size={0.02}
+        sizeAttenuation
+        depthWrite={false}
+        color="#7dd3fc"
+        opacity={0.85}
+      />
+    </Points>
   );
 }
 
@@ -54,15 +68,16 @@ export function HeroScene() {
   return (
     <Canvas
       className="!absolute inset-0"
-      camera={{ position: [0, 0, 6], fov: 45 }}
+      camera={{ position: [0, 0, 5.5], fov: 45 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
     >
-      <ambientLight intensity={0.4} />
-      <directionalLight position={[5, 5, 5]} intensity={1.2} color="#f0d78c" />
-      <pointLight position={[-4, -2, -2]} intensity={0.6} color="#c9a84c" />
-      <Shards />
-      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.4} />
+      <ambientLight intensity={0.45} />
+      <directionalLight position={[4, 4, 5]} intensity={1.1} color="#93c5fd" />
+      <pointLight position={[-4, -2, -2]} intensity={0.8} color="#22c55e" />
+      <pointLight position={[3, -3, 2]} intensity={0.5} color="#ef4444" />
+      <Knot />
+      <Particles />
     </Canvas>
   );
 }
