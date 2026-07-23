@@ -4,7 +4,6 @@ const links = [
   { href: "#origin", label: "Origin" },
   { href: "#arsenal", label: "Arsenal" },
   { href: "#github", label: "GitHub" },
-  { href: "#playground", label: "Playground" },
   { href: "#projects", label: "Projects" },
   { href: "#ask", label: "Ask AI" },
   { href: "#shelf", label: "Anime" },
