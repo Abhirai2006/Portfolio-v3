@@ -502,7 +502,7 @@ function Devlog() {
     },
   ];
   return (
-    <section className="mx-auto max-w-6xl px-6 py-28">
+    <section id="devlog" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="07" title="Devlog" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Most students hide their bugs. I write about mine.
