@@ -8,6 +8,7 @@ export type Project = {
   images?: string[];
   live?: string;
   repo?: string;
+  snippet?: { title: string; lines: string[] };
 };
 
 export function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
@@ -93,6 +94,32 @@ export function ProjectModal({ project, onClose }: { project: Project; onClose: 
                 </>
               )}
             </>
+          ) : project.snippet ? (
+            <div className="h-full w-full bg-black/90 p-5 sm:p-6 font-mono text-[12px] sm:text-sm overflow-auto">
+              <div className="flex items-center gap-1.5 mb-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-destructive" />
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
+                <span className="ml-3 text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {project.snippet.title}
+                </span>
+              </div>
+              <pre className="whitespace-pre-wrap leading-relaxed text-emerald-300/90">
+                {project.snippet.lines.map((l, idx) => (
+                  <div key={idx}>
+                    {l.startsWith("$") || l.startsWith(">") ? (
+                      <span className="text-primary">{l}</span>
+                    ) : l.startsWith("✔") ? (
+                      <span className="text-emerald-400">{l}</span>
+                    ) : l.startsWith("✘") ? (
+                      <span className="text-destructive">{l}</span>
+                    ) : (
+                      <span className="text-foreground/80">{l}</span>
+                    )}
+                  </div>
+                ))}
+              </pre>
+            </div>
           ) : (
             <div className="h-full w-full flex flex-col items-center justify-center text-muted-foreground font-mono text-xs uppercase tracking-widest gap-2 bg-gradient-to-br from-primary/10 via-transparent to-accent/10">
               <div className="text-5xl font-display gold-text">{project.title[0]}</div>

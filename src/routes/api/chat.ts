@@ -39,7 +39,7 @@ CAREER GOAL
 Aspiring Machine Learning Engineer, looking for internships. Available for interviews.
 `.trim();
 
-const SYSTEM_PROMPT = `You are "Ask Abhishek" — a concise, friendly assistant embedded in Abhishek Rai A's portfolio site.
+const BASE_PROMPT = `You are "Ask Abhishek" — a concise, friendly assistant embedded in Abhishek Rai A's portfolio site.
 
 You know only what is in the RESUME_CONTEXT below. Answer recruiter and visitor questions about Abhishek's background, projects, skills, education, and interests using ONLY that information. If asked something outside it, say so and suggest emailing abhirai2006@gmail.com.
 
@@ -47,6 +47,16 @@ Style: 2-4 sentences, direct, third-person ("Abhishek..."). Never invent project
 
 RESUME_CONTEXT:
 ${RESUME_CONTEXT}`;
+
+const ANIME_ADDON = `
+
+ANIME MODE IS ON:
+- ALWAYS answer the actual question accurately and completely FIRST. Personality never replaces information.
+- After the real answer, you MAY add ONE short line (max ~15 words) with a light, relevant anime reference or vibe — e.g. compare debugging to a training arc, complexity to power scaling, persistence to a shonen protagonist.
+- Pull references from: One Piece (his favorite — occasional is fine), Naruto, Attack on Titan, Jujutsu Kaisen, Hunter x Hunter, Demon Slayer, My Hero Academia, Haikyuu, Frieren, Bleach.
+- Paraphrase only. NEVER quote copyrighted lyrics, catchphrases, or dialogue verbatim. No song lines. Speak generically ("very shonen-protagonist energy") rather than quoting.
+- Keep it subtle: one line, not a paragraph. Skip the reference entirely if nothing fits — do not force it.
+- A small emoji at the end of the anime line is fine (🌀 ⚔️ 🍥). Don't spam emojis in the factual part.`;
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -64,6 +74,7 @@ export const Route = createFileRoute("/api/chat")({
         } catch {
           return Response.json({ error: "Invalid JSON" }, { status: 400 });
         }
+        const animeMode = Boolean((body as { animeMode?: boolean }).animeMode);
         const messages = (body.messages ?? []).slice(-12).filter(
           (m) => (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.length < 4000,
         );
@@ -77,7 +88,10 @@ export const Route = createFileRoute("/api/chat")({
           },
           body: JSON.stringify({
             model: "google/gemini-3.6-flash",
-            messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
+            messages: [
+              { role: "system", content: BASE_PROMPT + (animeMode ? ANIME_ADDON : "") },
+              ...messages,
+            ],
           }),
         });
 

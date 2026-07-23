@@ -20,6 +20,7 @@ export function AskAbhishek() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [animeMode, setAnimeMode] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export function AskAbhishek() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({ messages: next, animeMode }),
       });
       const data = (await res.json()) as { reply?: string; error?: string };
       setMessages((m) => [
@@ -58,12 +59,12 @@ export function AskAbhishek() {
     <div className="rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden shadow-[0_20px_80px_-30px_rgba(201,168,76,0.35)]">
       <div className="flex items-center justify-between border-b border-border px-5 py-3">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+          <span className={`h-2 w-2 rounded-full animate-pulse ${animeMode ? "bg-accent" : "bg-primary"}`} />
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            abhi's.ai · online
+            abhi's.ai · {animeMode ? "anime mode 🌀" : "online"}
           </span>
         </div>
-        <span className="font-mono text-[10px] text-muted-foreground">gemini-3.6-flash</span>
+        <span className="font-mono text-[10px] text-muted-foreground">Powered by AI</span>
       </div>
       <div ref={scrollRef} className="h-[380px] overflow-y-auto px-5 py-4 space-y-4">
         {messages.map((m, i) => (
@@ -72,7 +73,7 @@ export function AskAbhishek() {
               className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                 m.role === "user"
                   ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground border border-border"
+                  : `${animeMode && i > 0 ? "bg-accent/10 border-accent/40" : "bg-secondary border-border"} text-secondary-foreground border`
               }`}
             >
               <div className="prose prose-sm prose-invert max-w-none prose-p:my-1 prose-ul:my-1">
@@ -83,28 +84,46 @@ export function AskAbhishek() {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-secondary border border-border rounded-2xl px-4 py-2.5">
+            <div className={`rounded-2xl px-4 py-2.5 border ${animeMode ? "bg-accent/10 border-accent/40" : "bg-secondary border-border"}`}>
               <div className="flex gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce" />
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce [animation-delay:120ms]" />
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce [animation-delay:240ms]" />
+                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${animeMode ? "bg-accent" : "bg-primary"}`} />
+                <span className={`h-1.5 w-1.5 rounded-full animate-bounce [animation-delay:120ms] ${animeMode ? "bg-accent" : "bg-primary"}`} />
+                <span className={`h-1.5 w-1.5 rounded-full animate-bounce [animation-delay:240ms] ${animeMode ? "bg-accent" : "bg-primary"}`} />
               </div>
             </div>
           </div>
         )}
       </div>
       <div className="border-t border-border px-5 py-3 space-y-3">
-        <div className="flex flex-wrap gap-2">
-          {SUGGESTED.map((s) => (
-            <button
-              key={s}
-              onClick={() => send(s)}
-              disabled={loading}
-              className="text-[11px] px-2.5 py-1 rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors disabled:opacity-40"
-            >
-              {s}
-            </button>
-          ))}
+        <div className="flex items-center justify-between">
+          <div className="flex flex-wrap gap-2">
+            {SUGGESTED.map((s) => (
+              <button
+                key={s}
+                onClick={() => send(s)}
+                disabled={loading}
+                className="text-[11px] px-2.5 py-1 rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary transition-colors disabled:opacity-40"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => setAnimeMode((v) => !v)}
+            aria-pressed={animeMode}
+            title="Toggle Anime Mode (easter egg)"
+            className={`shrink-0 ml-2 inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest rounded-full border px-2.5 py-1 transition-colors ${
+              animeMode
+                ? "border-accent text-accent bg-accent/10"
+                : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+            }`}
+          >
+            <span className={`h-3 w-6 rounded-full relative transition-colors ${animeMode ? "bg-accent/40" : "bg-muted"}`}>
+              <span className={`absolute top-0.5 h-2 w-2 rounded-full bg-background transition-all ${animeMode ? "left-3" : "left-0.5"}`} />
+            </span>
+            Anime {animeMode ? "ON" : "OFF"}
+          </button>
         </div>
         <form
           onSubmit={(e) => {
@@ -116,7 +135,7 @@ export function AskAbhishek() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about Abhishek's projects, skills, availability…"
+            placeholder={animeMode ? "Ask away — expect the occasional anime detour…" : "Ask about Abhishek's projects, skills, availability…"}
             className="flex-1 bg-background border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary transition-colors"
           />
           <button
