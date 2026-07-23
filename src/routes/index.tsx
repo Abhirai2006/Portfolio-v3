@@ -357,6 +357,24 @@ function Projects() {
       tags: ["C++", "OOP"],
       images: [],
       repo: "https://github.com/Abhirai2006",
+      snippet: {
+        title: "banking.cpp — sample session",
+        lines: [
+          "$ ./banking",
+          "── Mini Banking System ─────────────",
+          "1) Deposit   2) Withdraw   3) Balance   4) Exit",
+          "> 1",
+          "Amount: 2500",
+          "✔ Deposited ₹2500.  New balance: ₹7,300",
+          "> 2",
+          "Amount: 9000",
+          "✘ Insufficient funds. Balance: ₹7,300",
+          "> 3",
+          "Balance: ₹7,300",
+          "> 4",
+          "Session closed. Goodbye 👋",
+        ],
+      },
     },
   ];
   const [active, setActive] = useState<Project | null>(null);
