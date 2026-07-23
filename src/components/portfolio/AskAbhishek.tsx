@@ -60,7 +60,7 @@ export function AskAbhishek() {
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
           <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            ask-abhishek.ai · online
+            abhi's.ai · online
           </span>
         </div>
         <span className="font-mono text-[10px] text-muted-foreground">gemini-3.6-flash</span>
