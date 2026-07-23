@@ -81,7 +81,7 @@ function Hero() {
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
             <span className="block">ABHISHEK</span>
-            <span className="block gold-text">RAI · A</span>
+            <span className="block gold-text">RAI A</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
             Aspiring{" "}
@@ -102,6 +102,14 @@ function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
             >
               Hire me
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1ycs88LT19lRsgeC9fcXfwBPsMx448one/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+            >
+              Résumé ↗
             </a>
             <a
               href="https://github.com/Abhirai2006"
