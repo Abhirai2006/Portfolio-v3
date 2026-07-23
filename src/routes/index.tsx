@@ -23,17 +23,17 @@ const HeroScene = lazy(() =>
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Abhishek Rai A — Aspiring ML Engineer · Portfolio" },
+      { title: "Abhishek Rai A - ML Engineer · Live Projects" },
       {
         name: "description",
         content:
-          "Portfolio of Abhishek Rai A — B.E. AI & ML student (GPA 9.31), Mysore. Live GitHub, in-browser ML demos, and an AI assistant trained on his resume.",
+          "Portfolio of Abhishek Rai A — B.E. AI & ML student, Mysore. Live GitHub, in-browser ML demos, and an AI assistant trained on his resume.",
       },
-      { property: "og:title", content: "Abhishek Rai A — Aspiring ML Engineer" },
+      { property: "og:title", content: "Abhishek Rai A - ML Engineer · Live Projects" },
       {
         property: "og:description",
         content:
-          "Scroll-driven portfolio: live GitHub, MNIST digit classifier, sorting & search visualizers, Ask-Abhishek AI.",
+          "Portfolio of Abhishek Rai A — B.E. AI & ML student, Mysore. Live GitHub, in-browser ML demos, and an AI assistant trained on his resume.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
