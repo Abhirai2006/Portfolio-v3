@@ -527,6 +527,11 @@ function Devlog() {
 
 /* ---------- CONTACT ---------- */
 function Contact() {
+  const [revealed, setRevealed] = useState(false);
+  // Split + reversed encoding so raw source doesn't contain the strings verbatim.
+  const decode = (parts: string[]) => parts.map((p) => p.split("").reverse().join("")).join("");
+  const email = decode(["moc.li", "amg@60", "02iarih", "ba"]);
+  const phone = decode(["19+", "54110", "8606 6 "]);
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="08" title="Let's Build Something" />
@@ -539,9 +544,35 @@ function Contact() {
           </div>
           <div><span className="text-primary">$</span> whoami</div>
           <div className="text-muted-foreground pl-2">abhishek@rai:~$ aspiring_ml_engineer</div>
-          <div><span className="text-primary">$</span> cat contact.sh</div>
-          <div className="text-muted-foreground pl-2">→ <a href="mailto:abhirai2006@gmail.com" className="text-primary hover:underline">abhirai2006@gmail.com</a></div>
-          <div className="text-muted-foreground pl-2">→ <a href="tel:+919606801145" className="text-primary hover:underline">+91 96068 01145</a></div>
+          <div>
+            <span className="text-primary">$</span>{" "}
+            <button
+              onClick={() => setRevealed(true)}
+              className="text-foreground hover:text-primary underline-offset-4 hover:underline"
+            >
+              cat contact.sh
+            </button>
+          </div>
+          {revealed ? (
+            <>
+              <div className="text-muted-foreground pl-2">
+                →{" "}
+                <a href={`mailto:${email}`} className="text-primary hover:underline">
+                  {email}
+                </a>
+              </div>
+              <div className="text-muted-foreground pl-2">
+                →{" "}
+                <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-primary hover:underline">
+                  {phone}
+                </a>
+              </div>
+            </>
+          ) : (
+            <div className="text-muted-foreground pl-2 italic">
+              [ contact locked — click <span className="text-primary">cat contact.sh</span> to decrypt ]
+            </div>
+          )}
           <div><span className="text-primary">$</span> ./transmit.sh</div>
           <div className="text-muted-foreground pl-2 animate-pulse">▍</div>
         </div>
@@ -550,12 +581,18 @@ function Contact() {
             An algorithm to crack, a theorem to prove, or the latest anime arc — drop a line.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a
-              href="mailto:abhirai2006@gmail.com"
+            <button
+              onClick={() => setRevealed(true)}
               className="rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90"
             >
-              Email me
-            </a>
+              {revealed ? (
+                <a href={`mailto:${email}`} className="text-primary-foreground">
+                  {email}
+                </a>
+              ) : (
+                "Reveal email"
+              )}
+            </button>
             <a
               href="https://github.com/Abhirai2006"
               target="_blank"
