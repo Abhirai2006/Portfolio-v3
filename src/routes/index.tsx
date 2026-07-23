@@ -530,8 +530,8 @@ function Contact() {
   const [revealed, setRevealed] = useState(false);
   // Split + reversed encoding so raw source doesn't contain the strings verbatim.
   const decode = (parts: string[]) => parts.map((p) => p.split("").reverse().join("")).join("");
-  const email = decode(["moc.li", "amg@60", "02iarih", "ba"]);
-  const phone = decode(["19+", "54110", "8606 6 "]);
+  const email = decode(["iarihba", "mg@6002", "moc.lia"]);
+  const phone = decode(["69 19+", "110 860", "54"]);
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="08" title="Let's Build Something" />
