@@ -481,49 +481,6 @@ function AnimeShelf() {
   );
 }
 
-/* ---------- DEVLOG ---------- */
-function Devlog() {
-  const posts = [
-    {
-      title: "Why I lost 8 hours to a single semicolon in my sorting visualizer",
-      note: "It rendered fine. Race Mode broke. Fix was 1 character. Lesson was bigger.",
-      read: "4 min",
-    },
-    {
-      title: "The math behind why my Movie Rec model favoured comedies",
-      note: "Cosine similarity is honest. It told me my training data was biased — I just wasn't listening.",
-      read: "5 min",
-    },
-    {
-      title: "I asked Claude to refactor my code. Here's where it failed.",
-      note: "AI copilots are powerful — but they don't know what your code is FOR. That's still your job.",
-      read: "3 min",
-    },
-  ];
-  return (
-    <section id="devlog" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="07" title="Devlog" />
-      <p className="mt-6 max-w-2xl text-muted-foreground">
-        Most students hide their bugs. I write about mine.
-      </p>
-      <div className="mt-10 divide-y divide-border border-y border-border">
-        {posts.map((p, i) => (
-          <article key={p.title} className="grid md:grid-cols-[100px_1fr_100px] gap-6 py-6 group">
-            <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              POST · {String(i + 1).padStart(2, "0")}
-            </div>
-            <div>
-              <h3 className="font-display text-2xl group-hover:text-primary transition-colors">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.note}</p>
-            </div>
-            <div className="text-xs font-mono text-muted-foreground md:text-right">{p.read}</div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 /* ---------- CONTACT ---------- */
 function Contact() {
   const [revealed, setRevealed] = useState(false);
