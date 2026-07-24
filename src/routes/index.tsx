@@ -55,7 +55,6 @@ function Index() {
       <Projects />
       <AskSection />
       <AnimeShelf />
-      <Devlog />
       <Contact />
       <Footer />
     </div>
@@ -104,7 +103,7 @@ function Hero() {
               Hire me
             </a>
             <a
-              href="https://drive.google.com/file/d/1ycs88LT19lRsgeC9fcXfwBPsMx448one/view?usp=sharing"
+              href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
@@ -124,7 +123,7 @@ function Hero() {
           <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
             <Kpi k="9.31" sub="GPA / 10" />
             <Kpi k="IV" sub="Semester" />
-            <Kpi k="4+" sub="Shipped projects" />
+            <Kpi k="3+1" sub="Web apps · C++ suite" />
           </dl>
         </div>
         <div className="hidden lg:flex justify-center">
@@ -457,8 +456,8 @@ function AnimeShelf() {
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
-        <Kpi k="53" sub="Series" />
-        <Kpi k="3,622" sub="Episodes" />
+        <Kpi k="56" sub="Series + movies" />
+        <Kpi k="3,653" sub="Episodes" />
         <Kpi k="S" sub="One Piece" />
       </div>
       <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
@@ -476,51 +475,8 @@ function AnimeShelf() {
         ))}
       </div>
       <p className="mt-6 text-xs font-mono text-muted-foreground">
-        領域展開 · 全集中 · 葬送 · 計画通り · 自由の翼
+        領域展開 · 全集中 · 葬送 · 計画通り · 自由の翼 · 76,750 min watched
       </p>
-    </section>
-  );
-}
-
-/* ---------- DEVLOG ---------- */
-function Devlog() {
-  const posts = [
-    {
-      title: "Why I lost 8 hours to a single semicolon in my sorting visualizer",
-      note: "It rendered fine. Race Mode broke. Fix was 1 character. Lesson was bigger.",
-      read: "4 min",
-    },
-    {
-      title: "The math behind why my Movie Rec model favoured comedies",
-      note: "Cosine similarity is honest. It told me my training data was biased — I just wasn't listening.",
-      read: "5 min",
-    },
-    {
-      title: "I asked Claude to refactor my code. Here's where it failed.",
-      note: "AI copilots are powerful — but they don't know what your code is FOR. That's still your job.",
-      read: "3 min",
-    },
-  ];
-  return (
-    <section id="devlog" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="07" title="Devlog" />
-      <p className="mt-6 max-w-2xl text-muted-foreground">
-        Most students hide their bugs. I write about mine.
-      </p>
-      <div className="mt-10 divide-y divide-border border-y border-border">
-        {posts.map((p, i) => (
-          <article key={p.title} className="grid md:grid-cols-[100px_1fr_100px] gap-6 py-6 group">
-            <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              POST · {String(i + 1).padStart(2, "0")}
-            </div>
-            <div>
-              <h3 className="font-display text-2xl group-hover:text-primary transition-colors">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.note}</p>
-            </div>
-            <div className="text-xs font-mono text-muted-foreground md:text-right">{p.read}</div>
-          </article>
-        ))}
-      </div>
     </section>
   );
 }
@@ -534,7 +490,7 @@ function Contact() {
   const phone = decode(["69 19+", "110 860", "54"]);
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="08" title="Let's Build Something" />
+      <ChapterHeader n="07" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="rounded-2xl border border-border bg-black/60 font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
