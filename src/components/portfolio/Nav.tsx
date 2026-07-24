@@ -6,7 +6,6 @@ const links = [
   { href: "#projects", label: "Arsenal" },
   { href: "#ask", label: "Ask Abhishek" },
   { href: "#shelf", label: "Anime" },
-  { href: "#devlog", label: "Devlog" },
   { href: "#contact", label: "Contact" },
 ];
 
