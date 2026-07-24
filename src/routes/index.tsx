@@ -55,7 +55,6 @@ function Index() {
       <Projects />
       <AskSection />
       <AnimeShelf />
-      <Devlog />
       <Contact />
       <Footer />
     </div>
