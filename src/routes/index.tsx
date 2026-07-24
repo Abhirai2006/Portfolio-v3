@@ -103,7 +103,7 @@ function Hero() {
               Hire me
             </a>
             <a
-              href="https://drive.google.com/file/d/1ycs88LT19lRsgeC9fcXfwBPsMx448one/view?usp=sharing"
+              href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
@@ -123,7 +123,7 @@ function Hero() {
           <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
             <Kpi k="9.31" sub="GPA / 10" />
             <Kpi k="IV" sub="Semester" />
-            <Kpi k="4+" sub="Shipped projects" />
+            <Kpi k="3+1" sub="Web apps · C++ suite" />
           </dl>
         </div>
         <div className="hidden lg:flex justify-center">
@@ -456,8 +456,8 @@ function AnimeShelf() {
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
-        <Kpi k="53" sub="Series" />
-        <Kpi k="3,622" sub="Episodes" />
+        <Kpi k="56" sub="Series + movies" />
+        <Kpi k="3,653" sub="Episodes" />
         <Kpi k="S" sub="One Piece" />
       </div>
       <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
@@ -475,7 +475,7 @@ function AnimeShelf() {
         ))}
       </div>
       <p className="mt-6 text-xs font-mono text-muted-foreground">
-        領域展開 · 全集中 · 葬送 · 計画通り · 自由の翼
+        領域展開 · 全集中 · 葬送 · 計画通り · 自由の翼 · 76,750 min watched
       </p>
     </section>
   );
@@ -533,7 +533,7 @@ function Contact() {
   const phone = decode(["69 19+", "110 860", "54"]);
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
-      <ChapterHeader n="08" title="Let's Build Something" />
+      <ChapterHeader n="07" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="rounded-2xl border border-border bg-black/60 font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
