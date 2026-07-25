@@ -4,6 +4,8 @@ A scroll-driven, 3D-accented personal portfolio for **Abhishek Rai A** (B.E. in 
 
 **Live:** https://portfolio-abhirai2006.lovable.app
 
+![Hero](docs/screenshots/01-hero.png)
+
 ---
 
 ## Highlights
@@ -15,6 +17,20 @@ A scroll-driven, 3D-accented personal portfolio for **Abhishek Rai A** (B.E. in 
 - **Ask Abhishek** — an AI assistant grounded in resume context, with an optional Anime Mode easter egg (Gen Z tone, references from the actual anime shelf).
 - **Privacy-aware contact block** — email and phone are obfuscated in source and revealed on demand.
 - **Fully responsive** — mobile, tablet, and desktop layouts, plus a PWA manifest and custom favicon.
+
+## Screens
+
+| Live GitHub activity | Arsenal (projects) |
+| --- | --- |
+| ![GitHub](docs/screenshots/03-live-code.png) | ![Arsenal](docs/screenshots/section-arsenal.png) |
+
+| Ask Abhishek | Anime Shelf |
+| --- | --- |
+| ![Ask](docs/screenshots/section-ask.png) | ![Anime](docs/screenshots/05-anime.png) |
+
+| Contact terminal | Mobile |
+| --- | --- |
+| ![Contact](docs/screenshots/section-contact.png) | <img src="docs/screenshots/07-mobile-hero.png" width="260" alt="Mobile" /> |
 
 ## Tech stack
 
@@ -98,38 +114,8 @@ Deployed on Cloudflare Workers via Lovable. Push to `main` and Lovable rebuilds 
 
 ## Credits
 
-- Design, code, and content: **Abhishek Rai A** — [GitHub](https://github.com/Abhirai2006) · [LinkedIn](https://www.linkedin.com/in/abhishek-rai-a-00067238b)
-- Scaffolded and iterated with [Lovable](https://lovable.dev)
+Design, code, and content: **Abhishek Rai A** — [GitHub](https://github.com/Abhirai2006) · [LinkedIn](https://www.linkedin.com/in/abhishek-rai-a-00067238b)
 
 ## License
 
 Source code released under the MIT License. Personal content (résumé text, portrait, project screenshots) is © Abhishek Rai A and not licensed for reuse.
-# Welcome to your Lovable project
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
