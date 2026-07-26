@@ -31,15 +31,15 @@ export function InfiniteSlider({
     const from = reverse ? translation - gap : 0;
     const to = reverse ? 0 : translation - gap;
     const key = direction === "horizontal" ? "x" : "y";
-    controls.start({
-      [key]: [from, to],
-      transition: {
+    controls.start(
+      { [key]: [from, to] } as any,
+      {
         ease: "linear",
         duration: dur,
         repeat: Infinity,
         ...(isFirst.current ? {} : { from: (from + to) / 2 }),
-      },
-    });
+      } as any,
+    );
     isFirst.current = false;
   }, [dur, width, height, gap, translation, direction, reverse, controls]);
 
