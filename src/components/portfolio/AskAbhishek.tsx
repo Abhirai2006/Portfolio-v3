@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { BorderTrail } from "@/components/motion/border-trail";
+import { TextShimmerWave } from "@/components/motion/text-shimmer-wave";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -56,7 +58,13 @@ export function AskAbhishek() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden shadow-[0_20px_80px_-30px_rgba(201,168,76,0.35)]">
+    <div className="relative rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden shadow-[0_20px_80px_-30px_rgba(59,130,246,0.35)]">
+      <BorderTrail
+        className={animeMode
+          ? "bg-gradient-to-r from-accent via-primary to-destructive"
+          : "bg-gradient-to-r from-primary via-primary/80 to-accent"}
+        size={90}
+      />
       <div className="flex items-center justify-between border-b border-border px-5 py-3">
         <div className="flex items-center gap-2">
           <span className={`h-2 w-2 rounded-full animate-pulse ${animeMode ? "bg-accent" : "bg-primary"}`} />
@@ -85,11 +93,13 @@ export function AskAbhishek() {
         {loading && (
           <div className="flex justify-start">
             <div className={`rounded-2xl px-4 py-2.5 border ${animeMode ? "bg-accent/10 border-accent/40" : "bg-secondary border-border"}`}>
-              <div className="flex gap-1">
-                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${animeMode ? "bg-accent" : "bg-primary"}`} />
-                <span className={`h-1.5 w-1.5 rounded-full animate-bounce [animation-delay:120ms] ${animeMode ? "bg-accent" : "bg-primary"}`} />
-                <span className={`h-1.5 w-1.5 rounded-full animate-bounce [animation-delay:240ms] ${animeMode ? "bg-accent" : "bg-primary"}`} />
-              </div>
+              <TextShimmerWave
+                className="font-mono text-xs uppercase tracking-widest text-primary"
+                duration={1.1}
+                spread={2}
+              >
+                thinking...
+              </TextShimmerWave>
             </div>
           </div>
         )}

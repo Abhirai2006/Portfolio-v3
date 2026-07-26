@@ -1,10 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
+import { Magnetic } from "@/components/motion/magnetic";
+import { AnimatedNumber } from "@/components/motion/animated-number";
+import { TextEffect } from "@/components/motion/text-effect";
+import { InfiniteSlider } from "@/components/motion/infinite-slider";
+import { Cursor } from "@/components/motion/cursor";
+import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
 import portrait from "@/assets/abhishek-portrait.jpg.asset.json";
 import muse1 from "@/assets/projects/muse-1.png.asset.json";
 import muse2 from "@/assets/projects/muse-2.png.asset.json";
@@ -57,6 +64,32 @@ function Index() {
       <AnimeShelf />
       <Contact />
       <Footer />
+      <FloatingDock />
+    </div>
+  );
+}
+
+/* ---------- FLOATING DOCK ---------- */
+function FloatingDock() {
+  const items = [
+    { title: "Top", icon: <Home className="h-5 w-5" />, href: "#top" },
+    { title: "Origin", icon: <User className="h-5 w-5" />, href: "#origin" },
+    { title: "GitHub", icon: <Github className="h-5 w-5" />, href: "#github" },
+    { title: "Arsenal", icon: <FolderGit2 className="h-5 w-5" />, href: "#projects" },
+    { title: "Ask", icon: <Sparkles className="h-5 w-5" />, href: "#ask" },
+    { title: "Anime", icon: <Clapperboard className="h-5 w-5" />, href: "#shelf" },
+    { title: "Contact", icon: <Mail className="h-5 w-5" />, href: "#contact" },
+  ];
+  return (
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 hidden md:block">
+      <Dock magnification={64} distance={140} panelHeight={64}>
+        {items.map((it) => (
+          <DockItem key={it.title} href={it.href}>
+            <DockLabel>{it.title}</DockLabel>
+            <DockIcon>{it.icon}</DockIcon>
+          </DockItem>
+        ))}
+      </Dock>
     </div>
   );
 }
@@ -79,8 +112,8 @@ function Hero() {
             Chapter 00 · Portfolio / 2026
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
-            <span className="block">ABHISHEK</span>
-            <span className="block gold-text">RAI A</span>
+            <TextEffect per="char" as="span" className="block">ABHISHEK</TextEffect>
+            <TextEffect per="char" as="span" className="block gold-text" delay={0.35}>RAI A</TextEffect>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
             Aspiring{" "}
@@ -90,34 +123,42 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#ask"
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
-            >
-              Ask my AI ↴
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
-            >
-              Hire me
-            </a>
-            <a
-              href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
-            >
-              Résumé ↗
-            </a>
-            <a
-              href="https://github.com/Abhirai2006"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
-            >
-              GitHub →
-            </a>
+            <Magnetic intensity={0.25} range={140}>
+              <a
+                href="#ask"
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+              >
+                Ask my AI ↴
+              </a>
+            </Magnetic>
+            <Magnetic intensity={0.25} range={140}>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+              >
+                Hire me
+              </a>
+            </Magnetic>
+            <Magnetic intensity={0.2} range={140}>
+              <a
+                href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+              >
+                Résumé ↗
+              </a>
+            </Magnetic>
+            <Magnetic intensity={0.2} range={140}>
+              <a
+                href="https://github.com/Abhirai2006"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+              >
+                GitHub →
+              </a>
+            </Magnetic>
           </div>
 
           <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
@@ -152,6 +193,19 @@ function Kpi({ k, sub }: { k: string; sub: string }) {
   return (
     <div>
       <div className="text-3xl font-display gold-text">{k}</div>
+      <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
+        {sub}
+      </div>
+    </div>
+  );
+}
+
+function AnimatedKpi({ n, sub }: { n: number; sub: string }) {
+  return (
+    <div>
+      <div className="text-3xl font-display gold-text">
+        <AnimatedNumber value={n} />
+      </div>
       <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
         {sub}
       </div>
@@ -377,13 +431,20 @@ function Projects() {
     },
   ];
   const [active, setActive] = useState<Project | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [hoveringGrid, setHoveringGrid] = useState(false);
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="04" title="The Arsenal" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Click any card to open the case file — screenshots, live site, and source code.
       </p>
-      <div className="mt-10 grid md:grid-cols-2 gap-4">
+      <div
+        ref={gridRef}
+        onMouseEnter={() => setHoveringGrid(true)}
+        onMouseLeave={() => setHoveringGrid(false)}
+        className="mt-10 grid md:grid-cols-2 gap-4 md:[&_*]:cursor-none"
+      >
         {items.map((p) => (
           <button
             key={p.title}
@@ -412,6 +473,12 @@ function Projects() {
         ))}
       </div>
       {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
+      <Cursor visible={hoveringGrid && !active}>
+        <div className="rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-[10px] font-mono uppercase tracking-widest shadow-lg flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground animate-pulse" />
+          Open
+        </div>
+      </Cursor>
     </section>
   );
 }
@@ -456,11 +523,24 @@ function AnimeShelf() {
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
-        <Kpi k="56" sub="Series + movies" />
-        <Kpi k="3,653" sub="Episodes" />
+        <AnimatedKpi n={56} sub="Series + movies" />
+        <AnimatedKpi n={3653} sub="Episodes" />
         <Kpi k="S" sub="One Piece" />
       </div>
-      <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
+      <div className="mt-10">
+        <InfiniteSlider gap={12} duration={35} speedOnHover={12}>
+          {top.map(([name, ep]) => (
+            <div
+              key={String(name)}
+              className="shrink-0 rounded-lg border border-border bg-card/60 px-4 py-2 font-mono text-xs flex items-center gap-3"
+            >
+              <span className="text-foreground">{name}</span>
+              <span className="text-primary">{ep}ep</span>
+            </div>
+          ))}
+        </InfiniteSlider>
+      </div>
+      <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
         {top.map(([name, ep], i) => (
           <div
             key={name}
