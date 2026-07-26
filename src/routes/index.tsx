@@ -1,10 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
+import { Magnetic } from "@/components/motion/magnetic";
+import { AnimatedNumber } from "@/components/motion/animated-number";
+import { TextEffect } from "@/components/motion/text-effect";
+import { InfiniteSlider } from "@/components/motion/infinite-slider";
+import { Cursor } from "@/components/motion/cursor";
+import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
 import portrait from "@/assets/abhishek-portrait.jpg.asset.json";
 import muse1 from "@/assets/projects/muse-1.png.asset.json";
 import muse2 from "@/assets/projects/muse-2.png.asset.json";
