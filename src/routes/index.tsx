@@ -510,11 +510,24 @@ function AnimeShelf() {
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
-        <Kpi k="56" sub="Series + movies" />
-        <Kpi k="3,653" sub="Episodes" />
+        <AnimatedKpi n={56} sub="Series + movies" />
+        <AnimatedKpi n={3653} sub="Episodes" />
         <Kpi k="S" sub="One Piece" />
       </div>
-      <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
+      <div className="mt-10">
+        <InfiniteSlider gap={12} duration={35} speedOnHover={12}>
+          {top.map(([name, ep]) => (
+            <div
+              key={String(name)}
+              className="shrink-0 rounded-lg border border-border bg-card/60 px-4 py-2 font-mono text-xs flex items-center gap-3"
+            >
+              <span className="text-foreground">{name}</span>
+              <span className="text-primary">{ep}ep</span>
+            </div>
+          ))}
+        </InfiniteSlider>
+      </div>
+      <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
         {top.map(([name, ep], i) => (
           <div
             key={name}
