@@ -64,6 +64,32 @@ function Index() {
       <AnimeShelf />
       <Contact />
       <Footer />
+      <FloatingDock />
+    </div>
+  );
+}
+
+/* ---------- FLOATING DOCK ---------- */
+function FloatingDock() {
+  const items = [
+    { title: "Top", icon: <Home className="h-5 w-5" />, href: "#top" },
+    { title: "Origin", icon: <User className="h-5 w-5" />, href: "#origin" },
+    { title: "GitHub", icon: <Github className="h-5 w-5" />, href: "#github" },
+    { title: "Arsenal", icon: <FolderGit2 className="h-5 w-5" />, href: "#projects" },
+    { title: "Ask", icon: <Sparkles className="h-5 w-5" />, href: "#ask" },
+    { title: "Anime", icon: <Clapperboard className="h-5 w-5" />, href: "#shelf" },
+    { title: "Contact", icon: <Mail className="h-5 w-5" />, href: "#contact" },
+  ];
+  return (
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 hidden md:block">
+      <Dock magnification={64} distance={140} panelHeight={64}>
+        {items.map((it) => (
+          <DockItem key={it.title} href={it.href}>
+            <DockLabel>{it.title}</DockLabel>
+            <DockIcon>{it.icon}</DockIcon>
+          </DockItem>
+        ))}
+      </Dock>
     </div>
   );
 }
@@ -86,8 +112,8 @@ function Hero() {
             Chapter 00 · Portfolio / 2026
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
-            <span className="block">ABHISHEK</span>
-            <span className="block gold-text">RAI A</span>
+            <TextEffect per="char" as="span" className="block">ABHISHEK</TextEffect>
+            <TextEffect per="char" as="span" className="block gold-text" delay={0.35}>RAI A</TextEffect>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
             Aspiring{" "}
@@ -97,34 +123,42 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#ask"
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
-            >
-              Ask my AI ↴
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
-            >
-              Hire me
-            </a>
-            <a
-              href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
-            >
-              Résumé ↗
-            </a>
-            <a
-              href="https://github.com/Abhirai2006"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
-            >
-              GitHub →
-            </a>
+            <Magnetic intensity={0.25} range={140}>
+              <a
+                href="#ask"
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+              >
+                Ask my AI ↴
+              </a>
+            </Magnetic>
+            <Magnetic intensity={0.25} range={140}>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+              >
+                Hire me
+              </a>
+            </Magnetic>
+            <Magnetic intensity={0.2} range={140}>
+              <a
+                href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+              >
+                Résumé ↗
+              </a>
+            </Magnetic>
+            <Magnetic intensity={0.2} range={140}>
+              <a
+                href="https://github.com/Abhirai2006"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+              >
+                GitHub →
+              </a>
+            </Magnetic>
           </div>
 
           <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
@@ -159,6 +193,19 @@ function Kpi({ k, sub }: { k: string; sub: string }) {
   return (
     <div>
       <div className="text-3xl font-display gold-text">{k}</div>
+      <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
+        {sub}
+      </div>
+    </div>
+  );
+}
+
+function AnimatedKpi({ n, sub }: { n: number; sub: string }) {
+  return (
+    <div>
+      <div className="text-3xl font-display gold-text">
+        <AnimatedNumber value={n} />
+      </div>
       <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
         {sub}
       </div>
