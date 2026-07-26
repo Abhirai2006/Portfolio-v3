@@ -431,13 +431,20 @@ function Projects() {
     },
   ];
   const [active, setActive] = useState<Project | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [hoveringGrid, setHoveringGrid] = useState(false);
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="04" title="The Arsenal" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
         Click any card to open the case file — screenshots, live site, and source code.
       </p>
-      <div className="mt-10 grid md:grid-cols-2 gap-4">
+      <div
+        ref={gridRef}
+        onMouseEnter={() => setHoveringGrid(true)}
+        onMouseLeave={() => setHoveringGrid(false)}
+        className="mt-10 grid md:grid-cols-2 gap-4 md:[&_*]:cursor-none"
+      >
         {items.map((p) => (
           <button
             key={p.title}
