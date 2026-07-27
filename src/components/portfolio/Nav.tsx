@@ -1,14 +1,4 @@
 import { useEffect, useState } from "react";
-import { AnimatedBackground } from "@/components/motion/animated-background";
-
-const links = [
-  { href: "#origin", label: "Origin" },
-  { href: "#github", label: "GitHub" },
-  { href: "#projects", label: "Arsenal" },
-  { href: "#ask", label: "Ask Abhishek" },
-  { href: "#shelf", label: "Anime" },
-  { href: "#contact", label: "Contact" },
-];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,24 +20,6 @@ export function Nav() {
           <span className="gold-text font-semibold">ABHI.RAI</span>
           <span className="text-muted-foreground">— PORTFOLIO / 2026</span>
         </a>
-        <nav className="hidden md:flex items-center gap-1 text-xs uppercase tracking-widest text-muted-foreground">
-          <AnimatedBackground
-            className="rounded-md bg-primary/10 border border-primary/30"
-            enableHover
-            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-          >
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                data-id={l.href}
-                className="px-3 py-1.5 rounded-md transition-colors hover:text-primary"
-              >
-                {l.label}
-              </a>
-            ))}
-          </AnimatedBackground>
-        </nav>
         <a
           href="#contact"
           className="rounded-full border border-primary/60 text-primary px-4 py-1.5 text-xs font-semibold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
