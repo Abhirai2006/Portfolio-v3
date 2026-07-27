@@ -61,9 +61,9 @@ export function AskAbhishek() {
     <div className="relative rounded-2xl border border-border bg-card/60 backdrop-blur overflow-hidden shadow-[0_20px_80px_-30px_rgba(59,130,246,0.35)]">
       <BorderTrail
         className={animeMode
-          ? "bg-gradient-to-r from-accent via-primary to-destructive"
-          : "bg-gradient-to-r from-primary via-primary/80 to-accent"}
-        size={90}
+          ? "bg-accent"
+          : "bg-primary"}
+        size={32}
       />
       <div className="flex items-center justify-between border-b border-border px-5 py-3">
         <div className="flex items-center gap-2">
