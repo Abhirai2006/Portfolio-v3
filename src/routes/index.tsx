@@ -112,8 +112,8 @@ function Hero() {
             Chapter 00 · Portfolio / 2026
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
-            <TextEffect per="char" as="span" className="block">ABHISHEK</TextEffect>
-            <TextEffect per="char" as="span" className="block gold-text" delay={0.35}>RAI A</TextEffect>
+            <span className="block">ABHISHEK</span>
+            <span className="block gold-text">RAI A</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
             Aspiring{" "}
