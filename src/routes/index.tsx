@@ -5,6 +5,7 @@ import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import { MotionToggle } from "@/components/portfolio/MotionToggle";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
@@ -65,6 +66,7 @@ function Index() {
       <Contact />
       <Footer />
       <FloatingDock />
+      <MotionToggle />
     </div>
   );
 }
