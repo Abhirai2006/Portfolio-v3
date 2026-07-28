@@ -86,7 +86,7 @@ function FloatingDock() {
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 hidden md:block">
       <Dock magnification={64} distance={140} panelHeight={64}>
         {items.map((it) => (
-          <DockItem key={it.title} href={it.href}>
+          <DockItem key={it.title} href={it.href} label={it.title}>
             <DockLabel>{it.title}</DockLabel>
             <DockIcon>{it.icon}</DockIcon>
           </DockItem>
