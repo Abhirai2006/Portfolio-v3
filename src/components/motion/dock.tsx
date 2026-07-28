@@ -110,7 +110,7 @@ export function DockItem({
 
   if (href) {
     return (
-      <a href={href} className="focus:outline-none">
+      <a href={href} aria-label={typeof children === "string" ? children : undefined} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full">
         {content}
       </a>
     );
