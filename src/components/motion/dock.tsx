@@ -71,11 +71,13 @@ export function DockItem({
   className,
   onClick,
   href,
+  label,
 }: {
   children: ReactNode;
   className?: string;
   onClick?: () => void;
   href?: string;
+  label?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { mouseX, spring, magnification, distance } = useDock();
@@ -110,7 +112,7 @@ export function DockItem({
 
   if (href) {
     return (
-      <a href={href} aria-label={typeof children === "string" ? children : undefined} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full">
+      <a href={href} aria-label={label} className="focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full">
         {content}
       </a>
     );
