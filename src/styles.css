@@ -149,3 +149,28 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* ---------- Reduced motion ----------
+   Honors both the OS preference and a manual toggle stored on <html data-reduce-motion="true">.
+   Kills long-running animations/transitions and neutralizes marquee/bounce so nothing distracts
+   users who opted out. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee { animation: none !important; }
+}
+html[data-reduce-motion="true"] { scroll-behavior: auto; }
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html[data-reduce-motion="true"] .marquee { animation: none !important; }

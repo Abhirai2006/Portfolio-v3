@@ -5,6 +5,7 @@ import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
+import { MotionToggle } from "@/components/portfolio/MotionToggle";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
@@ -65,6 +66,7 @@ function Index() {
       <Contact />
       <Footer />
       <FloatingDock />
+      <MotionToggle />
     </div>
   );
 }
@@ -84,7 +86,7 @@ function FloatingDock() {
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 hidden md:block">
       <Dock magnification={64} distance={140} panelHeight={64}>
         {items.map((it) => (
-          <DockItem key={it.title} href={it.href}>
+          <DockItem key={it.title} href={it.href} label={it.title}>
             <DockLabel>{it.title}</DockLabel>
             <DockIcon>{it.icon}</DockIcon>
           </DockItem>
