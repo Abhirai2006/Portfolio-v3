@@ -5,7 +5,10 @@ import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
-import { MotionToggle } from "@/components/portfolio/MotionToggle";
+import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
+import { MagicCard } from "@/components/portfolio/MagicCard";
+import { SpotlightPortrait } from "@/components/portfolio/SpotlightPortrait";
+import { WordReveal } from "@/components/motion/word-reveal";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
@@ -66,7 +69,7 @@ function Index() {
       <Contact />
       <Footer />
       <FloatingDock />
-      <MotionToggle />
+      <ThemeToggle />
     </div>
   );
 }
@@ -128,17 +131,23 @@ function Hero() {
             <Magnetic intensity={0.25} range={140}>
               <a
                 href="#ask"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold transition"
               >
-                Ask my AI ↴
+                <span className="absolute inset-0 -translate-x-full bg-accent transition-transform duration-300 group-hover:translate-x-0" aria-hidden="true" />
+                <span className="relative flex items-center gap-2 group-hover:text-accent-foreground transition-colors">
+                  Ask my AI <span className="transition-transform duration-300 group-hover:translate-y-0.5">↴</span>
+                </span>
               </a>
             </Magnetic>
             <Magnetic intensity={0.25} range={140}>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary transition"
               >
-                Hire me
+                <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-300 group-hover:translate-x-0" aria-hidden="true" />
+                <span className="relative flex items-center gap-2 group-hover:text-primary-foreground transition-colors">
+                  Hire me <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
               </a>
             </Magnetic>
             <Magnetic intensity={0.2} range={140}>
@@ -146,9 +155,9 @@ function Hero() {
                 href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
               >
-                Résumé ↗
+                Résumé <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
               </a>
             </Magnetic>
             <Magnetic intensity={0.2} range={140}>
@@ -156,9 +165,9 @@ function Hero() {
                 href="https://github.com/Abhirai2006"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
               >
-                GitHub →
+                GitHub <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </Magnetic>
           </div>
@@ -172,11 +181,9 @@ function Hero() {
         <div className="hidden lg:flex justify-center">
           <div className="relative">
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/40 via-accent/20 to-destructive/30 blur-2xl opacity-60" />
-            <img
-              src={portrait.url}
-              alt="Abhishek Rai A"
-              className="relative h-[420px] w-[320px] object-cover rounded-[2rem] border border-border shadow-2xl grayscale-[0.15]"
-            />
+            <div className="relative">
+              <SpotlightPortrait src={portrait.url} alt="Abhishek Rai A" />
+            </div>
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-border bg-background/90 backdrop-blur px-4 py-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground whitespace-nowrap">
               <span className="text-primary">●</span> abhishek · mysuru
             </div>
