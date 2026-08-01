@@ -103,7 +103,7 @@ function FloatingDock() {
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 light:opacity-25">
         <Suspense fallback={null}>
           <HeroScene />
         </Suspense>
