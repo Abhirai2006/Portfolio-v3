@@ -20,17 +20,25 @@ A scroll-driven, 3D-accented personal portfolio for **Abhishek Rai A** (B.E. in 
 
 ## Screens
 
-| Live GitHub activity | Arsenal (projects) |
-| --- | --- |
-| ![GitHub](docs/screenshots/03-live-code.png) | ![Arsenal](docs/screenshots/section-arsenal.png) |
+**Chapter 03 — Live Code Activity** (live GitHub repos, language mix, contribution heatmap)
 
-| Ask Abhishek | Anime Shelf |
-| --- | --- |
-| ![Ask](docs/screenshots/section-ask.png) | ![Anime](docs/screenshots/05-anime.png) |
+![Live Code Activity section showing repo/star/follower counts, a contribution heatmap and language mix](docs/screenshots/03-live-code.png)
 
-| Contact terminal | Mobile |
+**Chapter 04 — The Arsenal** (project case-study cards, each opens a modal)
+
+![The Arsenal section with cards for MUSE Students Voice, O(patience), Binary Search Visualizer and the C++ Console Mini-Suite](docs/screenshots/04-projects.png)
+
+| Chapter 02 — Power Levels | Chapter 05 — Ask Abhishek |
 | --- | --- |
-| ![Contact](docs/screenshots/section-contact.png) | <img src="docs/screenshots/07-mobile-hero.png" width="260" alt="Mobile" /> |
+| ![Skill tier list: proficient, intermediate, learning](docs/screenshots/02-power-levels.png) | ![Ask Abhishek chat panel with suggested questions and the Anime Mode toggle](docs/screenshots/06-ask.png) |
+
+| Chapter 06 — Anime Shelf | Chapter 07 — Contact terminal |
+| --- | --- |
+| ![Anime shelf with 56 titles and 3,653 episodes](docs/screenshots/05-anime.png) | ![Contact section styled as a terminal with a reveal-email button](docs/screenshots/08-contact.png) |
+
+**Responsive** — the same page on a 390px viewport:
+
+<img src="docs/screenshots/07-mobile-hero.png" width="260" alt="Mobile hero view of the portfolio" />
 
 ## Tech stack
 
