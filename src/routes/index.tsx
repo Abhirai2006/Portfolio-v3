@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
-import { MotionToggle } from "@/components/portfolio/MotionToggle";
+import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
+import { MagicCard } from "@/components/portfolio/MagicCard";
+import { SpotlightPortrait } from "@/components/portfolio/SpotlightPortrait";
+import { WordReveal } from "@/components/motion/word-reveal";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
@@ -66,7 +69,7 @@ function Index() {
       <Contact />
       <Footer />
       <FloatingDock />
-      <MotionToggle />
+      <ThemeToggle />
     </div>
   );
 }
@@ -100,7 +103,7 @@ function FloatingDock() {
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 light:opacity-25">
         <Suspense fallback={null}>
           <HeroScene />
         </Suspense>
@@ -128,17 +131,23 @@ function Hero() {
             <Magnetic intensity={0.25} range={140}>
               <a
                 href="#ask"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold transition"
               >
-                Ask my AI ↴
+                <span className="absolute inset-0 -translate-x-full bg-accent transition-transform duration-300 group-hover:translate-x-0" aria-hidden="true" />
+                <span className="relative flex items-center gap-2 group-hover:text-accent-foreground transition-colors">
+                  Ask my AI <span className="transition-transform duration-300 group-hover:translate-y-0.5">↴</span>
+                </span>
               </a>
             </Magnetic>
             <Magnetic intensity={0.25} range={140}>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary transition"
               >
-                Hire me
+                <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-300 group-hover:translate-x-0" aria-hidden="true" />
+                <span className="relative flex items-center gap-2 group-hover:text-primary-foreground transition-colors">
+                  Hire me <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
               </a>
             </Magnetic>
             <Magnetic intensity={0.2} range={140}>
@@ -146,9 +155,9 @@ function Hero() {
                 href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
               >
-                Résumé ↗
+                Résumé <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
               </a>
             </Magnetic>
             <Magnetic intensity={0.2} range={140}>
@@ -156,9 +165,9 @@ function Hero() {
                 href="https://github.com/Abhirai2006"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
+                className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
               >
-                GitHub →
+                GitHub <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </Magnetic>
           </div>
@@ -172,11 +181,9 @@ function Hero() {
         <div className="hidden lg:flex justify-center">
           <div className="relative">
             <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/40 via-accent/20 to-destructive/30 blur-2xl opacity-60" />
-            <img
-              src={portrait.url}
-              alt="Abhishek Rai A"
-              className="relative h-[420px] w-[320px] object-cover rounded-[2rem] border border-border shadow-2xl grayscale-[0.15]"
-            />
+            <div className="relative">
+              <SpotlightPortrait src={portrait.url} alt="Abhishek Rai A" />
+            </div>
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-border bg-background/90 backdrop-blur px-4 py-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground whitespace-nowrap">
               <span className="text-primary">●</span> abhishek · mysuru
             </div>
@@ -286,7 +293,7 @@ function ChapterHeader({ n, title }: { n: string; title: string }) {
       <span className="font-chapter text-7xl gold-text leading-none">{n}</span>
       <div>
         <div className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Chapter</div>
-        <h2 className="font-display text-4xl sm:text-5xl font-semibold">{title}</h2>
+        <WordReveal text={title} className="font-display text-4xl sm:text-5xl font-semibold" />
       </div>
     </div>
   );
@@ -306,13 +313,13 @@ function NowBuilding() {
 }
 function StatusCard({ tag, title, body }: { tag: string; title: string; body: string }) {
   return (
-    <div className="rounded-2xl border border-border bg-card/50 backdrop-blur p-5 hover:border-primary/60 transition-colors">
+    <MagicCard className="border border-border bg-card/50 backdrop-blur p-5 hover:border-primary/60 transition-colors">
       <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary">
         <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" /> {tag}
       </div>
       <div className="mt-3 font-display text-xl">{title}</div>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{body}</p>
-    </div>
+    </MagicCard>
   );
 }
 
@@ -447,11 +454,15 @@ function Projects() {
         onMouseLeave={() => setHoveringGrid(false)}
         className="mt-10 grid md:grid-cols-2 gap-4 md:[&_*]:cursor-none"
       >
-        {items.map((p) => (
-          <button
+        {items.map((p, idx) => (
+          <MagicCard
             key={p.title}
+            style={{ animationDelay: `${idx * 0.7}s` }}
+            className="breathe border border-border bg-card/50 hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all"
+          >
+          <button
             onClick={() => setActive(p)}
-            className="group text-left rounded-2xl border border-border bg-card/50 p-6 hover:border-primary hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 transition-all"
+            className="group block w-full h-full text-left p-6"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -472,6 +483,7 @@ function Projects() {
               open case file →
             </div>
           </button>
+          </MagicCard>
         ))}
       </div>
       {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
@@ -566,15 +578,43 @@ function AnimeShelf() {
 /* ---------- CONTACT ---------- */
 function Contact() {
   const [revealed, setRevealed] = useState(false);
+  const parallax = useRef<HTMLElement>(null);
+  const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const el = parallax.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const progress = 1 - r.top / window.innerHeight;
+      setOffset(Math.max(-1, Math.min(1, progress)) * 60);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   // Split + reversed encoding so raw source doesn't contain the strings verbatim.
   const decode = (parts: string[]) => parts.map((p) => p.split("").reverse().join("")).join("");
   const email = decode(["iarihba", "mg@6002", "moc.lia"]);
   const phone = decode(["69 19+", "110 860", "54"]);
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
+    <section ref={parallax} id="contact" className="relative overflow-hidden mx-auto max-w-6xl px-6 py-28">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div
+          className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl"
+          style={{ transform: `translate3d(0, ${offset * -0.6}px, 0)` }}
+        />
+        <div
+          className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-accent/15 blur-3xl"
+          style={{ transform: `translate3d(0, ${offset * 0.8}px, 0)` }}
+        />
+        <div
+          className="absolute left-1/2 top-1/3 h-56 w-56 rounded-full bg-destructive/10 blur-3xl"
+          style={{ transform: `translate3d(0, ${offset * -0.3}px, 0)` }}
+        />
+      </div>
       <ChapterHeader n="07" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
-        <div className="rounded-2xl border border-border bg-black/60 font-mono text-sm p-6 space-y-1 shadow-2xl">
+        <div className="rounded-2xl border border-border bg-card font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
             <span className="h-3 w-3 rounded-full bg-destructive" />
             <span className="h-3 w-3 rounded-full bg-primary" />
