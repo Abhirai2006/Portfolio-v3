@@ -454,11 +454,15 @@ function Projects() {
         onMouseLeave={() => setHoveringGrid(false)}
         className="mt-10 grid md:grid-cols-2 gap-4 md:[&_*]:cursor-none"
       >
-        {items.map((p) => (
-          <button
+        {items.map((p, idx) => (
+          <MagicCard
             key={p.title}
+            className="breathe border border-border bg-card/50 hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all"
+          >
+          <button
             onClick={() => setActive(p)}
-            className="group text-left rounded-2xl border border-border bg-card/50 p-6 hover:border-primary hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 transition-all"
+            style={{ animationDelay: `${idx * 0.6}s` }}
+            className="group block w-full h-full text-left p-6"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -479,6 +483,7 @@ function Projects() {
               open case file →
             </div>
           </button>
+          </MagicCard>
         ))}
       </div>
       {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
