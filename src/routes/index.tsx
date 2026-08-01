@@ -457,11 +457,11 @@ function Projects() {
         {items.map((p, idx) => (
           <MagicCard
             key={p.title}
+            style={{ animationDelay: `${idx * 0.7}s` }}
             className="breathe border border-border bg-card/50 hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all"
           >
           <button
             onClick={() => setActive(p)}
-            style={{ animationDelay: `${idx * 0.6}s` }}
             className="group block w-full h-full text-left p-6"
           >
             <div className="flex items-start justify-between gap-4">
@@ -578,15 +578,43 @@ function AnimeShelf() {
 /* ---------- CONTACT ---------- */
 function Contact() {
   const [revealed, setRevealed] = useState(false);
+  const parallax = useRef<HTMLElement>(null);
+  const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const el = parallax.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const progress = 1 - r.top / window.innerHeight;
+      setOffset(Math.max(-1, Math.min(1, progress)) * 60);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   // Split + reversed encoding so raw source doesn't contain the strings verbatim.
   const decode = (parts: string[]) => parts.map((p) => p.split("").reverse().join("")).join("");
   const email = decode(["iarihba", "mg@6002", "moc.lia"]);
   const phone = decode(["69 19+", "110 860", "54"]);
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-28">
+    <section ref={parallax} id="contact" className="relative overflow-hidden mx-auto max-w-6xl px-6 py-28">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div
+          className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl"
+          style={{ transform: `translate3d(0, ${offset * -0.6}px, 0)` }}
+        />
+        <div
+          className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-accent/15 blur-3xl"
+          style={{ transform: `translate3d(0, ${offset * 0.8}px, 0)` }}
+        />
+        <div
+          className="absolute left-1/2 top-1/3 h-56 w-56 rounded-full bg-destructive/10 blur-3xl"
+          style={{ transform: `translate3d(0, ${offset * -0.3}px, 0)` }}
+        />
+      </div>
       <ChapterHeader n="07" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
-        <div className="rounded-2xl border border-border bg-black/60 font-mono text-sm p-6 space-y-1 shadow-2xl">
+        <div className="rounded-2xl border border-border bg-ink/90 font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
             <span className="h-3 w-3 rounded-full bg-destructive" />
             <span className="h-3 w-3 rounded-full bg-primary" />
