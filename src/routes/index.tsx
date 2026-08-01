@@ -293,7 +293,7 @@ function ChapterHeader({ n, title }: { n: string; title: string }) {
       <span className="font-chapter text-7xl gold-text leading-none">{n}</span>
       <div>
         <div className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">Chapter</div>
-        <h2 className="font-display text-4xl sm:text-5xl font-semibold">{title}</h2>
+        <WordReveal text={title} className="font-display text-4xl sm:text-5xl font-semibold" />
       </div>
     </div>
   );
@@ -313,13 +313,13 @@ function NowBuilding() {
 }
 function StatusCard({ tag, title, body }: { tag: string; title: string; body: string }) {
   return (
-    <div className="rounded-2xl border border-border bg-card/50 backdrop-blur p-5 hover:border-primary/60 transition-colors">
+    <MagicCard className="border border-border bg-card/50 backdrop-blur p-5 hover:border-primary/60 transition-colors">
       <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary">
         <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" /> {tag}
       </div>
       <div className="mt-3 font-display text-xl">{title}</div>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{body}</p>
-    </div>
+    </MagicCard>
   );
 }
 
