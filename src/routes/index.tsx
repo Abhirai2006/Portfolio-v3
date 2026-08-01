@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
@@ -614,7 +614,7 @@ function Contact() {
       </div>
       <ChapterHeader n="07" title="Let's Build Something" />
       <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
-        <div className="rounded-2xl border border-border bg-ink/90 font-mono text-sm p-6 space-y-1 shadow-2xl">
+        <div className="rounded-2xl border border-border bg-card font-mono text-sm p-6 space-y-1 shadow-2xl">
           <div className="flex gap-1.5 mb-3">
             <span className="h-3 w-3 rounded-full bg-destructive" />
             <span className="h-3 w-3 rounded-full bg-primary" />
