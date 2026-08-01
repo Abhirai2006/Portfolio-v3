@@ -10,10 +10,12 @@ export function MagicCard({
   children,
   className,
   radius = 320,
+  style,
 }: {
   children: ReactNode;
   className?: string;
   radius?: number;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: -9999, y: -9999 });
@@ -29,6 +31,7 @@ export function MagicCard({
       }}
       onMouseEnter={() => setOn(true)}
       onMouseLeave={() => setOn(false)}
+      style={style}
       className={cn("relative overflow-hidden rounded-2xl", className)}
     >
       <div
