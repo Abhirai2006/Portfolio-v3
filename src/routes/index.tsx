@@ -5,7 +5,6 @@ import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
 import { CursorGlow } from "@/components/portfolio/CursorGlow";
-import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
 import { MagicCard } from "@/components/portfolio/MagicCard";
 import { SpotlightPortrait } from "@/components/portfolio/SpotlightPortrait";
 import { WordReveal } from "@/components/motion/word-reveal";
@@ -18,6 +17,7 @@ import { Cursor } from "@/components/motion/cursor";
 import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
 import portrait from "@/assets/abhishek-portrait.jpg.asset.json";
 import muse1 from "@/assets/projects/muse-1.png.asset.json";
+
 import muse2 from "@/assets/projects/muse-2.png.asset.json";
 import muse3 from "@/assets/projects/muse-3.png.asset.json";
 import sort1 from "@/assets/projects/sort-1.png.asset.json";
