@@ -571,6 +571,7 @@ function AnimeShelf() {
       <p className="mt-6 text-xs font-mono text-muted-foreground">
         領域展開 · 全集中 · 葬送 · 計画通り · 自由の翼 · 76,750 min watched
       </p>
+      <TechniqueVault />
     </section>
   );
 }
