@@ -69,10 +69,10 @@ function Index() {
       <Contact />
       <Footer />
       <FloatingDock />
-      <ThemeToggle />
     </div>
   );
 }
+
 
 /* ---------- FLOATING DOCK ---------- */
 function FloatingDock() {
