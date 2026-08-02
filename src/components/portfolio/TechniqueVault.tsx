@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import type React from "react";
 
 /* ------------------------------------------------------------------
    Technique Vault — hand-drawn SVG homages to techniques from the
@@ -374,7 +375,7 @@ type Technique = {
   series: string;
   kanji: string;
   line: string;
-  Art: (p: ArtProps) => JSX.Element;
+  Art: (p: ArtProps) => React.ReactElement;
 };
 
 const TECHNIQUES: Technique[] = [
