@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
+import { TechniqueVault } from "@/components/portfolio/TechniqueVault";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
@@ -571,6 +572,7 @@ function AnimeShelf() {
       <p className="mt-6 text-xs font-mono text-muted-foreground">
         領域展開 · 全集中 · 葬送 · 計画通り · 自由の翼 · 76,750 min watched
       </p>
+      <TechniqueVault />
     </section>
   );
 }
