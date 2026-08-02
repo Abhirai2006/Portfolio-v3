@@ -87,9 +87,9 @@ function GearFive({ big }: ArtProps) {
         ))}
       </g>
       <g className="tv-bob">
-        <circle cx="100" cy="100" r="26" fill="var(--tv-sun)" opacity="0.9" />
-        <path d="M84 96 q16 -14 32 0" fill="none" stroke="var(--tv-rubber)" strokeWidth="3" strokeLinecap="round" />
-        <path d="M86 110 q14 12 28 0" fill="none" stroke="var(--tv-rubber)" strokeWidth="3" strokeLinecap="round" />
+        <ellipse cx="100" cy="112" rx="40" ry="9" fill="var(--tv-sun)" opacity="0.95" />
+        <path d="M76 112 q24 -34 48 0 z" fill="var(--tv-sun)" />
+        <path d="M76 108 q24 8 48 0" fill="none" stroke="var(--tv-rubber)" strokeWidth="5" strokeLinecap="round" />
       </g>
       {big && (
         <g opacity="0.7">
@@ -126,7 +126,7 @@ function Bankai({ big }: ArtProps) {
         />
       ))}
       <path
-        d="M40 140 q60 -80 120 -80"
+        d="M24 158 q76 -66 152 -108"
         fill="none"
         stroke="var(--tv-reiatsu)"
         strokeWidth="4"
@@ -134,7 +134,7 @@ function Bankai({ big }: ArtProps) {
         className="tv-trace"
       />
       <path
-        d="M46 158 q54 -70 112 -74"
+        d="M30 172 q74 -60 150 -102"
         fill="none"
         stroke="var(--tv-void)"
         strokeWidth="7"
@@ -173,12 +173,12 @@ function Haki({ big }: ArtProps) {
           key={a}
           d="M100 100 L118 64 L108 66 L124 30"
           fill="none"
-          stroke="var(--tv-magic)"
-          strokeWidth="2"
+          stroke="var(--tv-magic-hot)"
+          strokeWidth="2.6"
           strokeLinecap="round"
           transform={`rotate(${a} 100 100)`}
-          className="tv-crackle"
-          style={{ animationDelay: `${i * 0.16}s` }}
+          className="tv-crackle tv-glow"
+          style={{ color: "var(--tv-magic-hot)", animationDelay: `${i * 0.16}s` }}
         />
       ))}
       <rect x="82" y="86" width="36" height="28" rx="8" fill="var(--tv-void)" stroke="var(--tv-haki)" strokeWidth="2" />
@@ -250,7 +250,7 @@ function Doujutsu({ big }: ArtProps) {
       </g>
       <circle cx="100" cy="100" r="7" fill="var(--tv-void)" />
       <g className="tv-flicker" style={{ animationDuration: "5s" }}>
-        {[10, 17, 24, 31].map((r, i) => (
+        {[14, 22, 30].map((r, i) => (
           <circle
             key={r}
             cx="100"
@@ -258,8 +258,8 @@ function Doujutsu({ big }: ArtProps) {
             r={r}
             fill="none"
             stroke="var(--tv-rinnegan)"
-            strokeWidth="1.6"
-            opacity="0.9"
+            strokeWidth="1.2"
+            opacity="0.55"
             className="tv-pulse"
             style={{ animationDelay: `${i * 0.25}s` }}
           />
@@ -311,13 +311,13 @@ function SixEyes({ big }: ArtProps) {
           />
         </g>
       ))}
+      <rect x="34" y="86" width="132" height="21" rx="6" fill="var(--tv-void)" opacity="0.55" className="tv-flicker" />
       <path
-        d="M78 138 q22 -16 44 0"
+        d="M34 96 H166"
         fill="none"
         stroke="var(--tv-six-eyes)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        opacity="0.7"
+        strokeWidth="1.2"
+        opacity="0.6"
         className="tv-trace"
       />
       {big && (
