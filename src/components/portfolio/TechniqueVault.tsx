@@ -84,8 +84,8 @@ function GearFive({ big }: ArtProps) {
         <Head cy={74} />
         <path d="M82 66 q18 -22 36 0 q-6 -6 -18 -6 q-12 0 -18 6z" fill="var(--tv-hair-white)" />
         <path d="M78 62 q-8 -4 -14 2 M122 62 q8 -4 14 2" stroke="var(--tv-hair-white)" strokeWidth="4" strokeLinecap="round" fill="none" />
-        <path d="M90 80 q4 -5 8 0 M110 80 q-4 -5 -8 0" stroke="var(--tv-ink)" strokeWidth="2" strokeLinecap="round" fill="none" />
-        <path d="M90 86 q10 10 20 0" stroke="var(--tv-ink)" strokeWidth="2.4" strokeLinecap="round" fill="none" />
+        <g fill="var(--tv-ink)"><ellipse cx="92" cy="76" rx="3" ry="4" /><ellipse cx="108" cy="76" rx="3" ry="4" /></g>
+        <path d="M93 86 q7 6 14 0" stroke="var(--tv-ink)" strokeWidth="2" strokeLinecap="round" fill="none" />
         {/* straw hat slung back */}
         <ellipse cx="140" cy="126" rx="20" ry="6" fill="var(--tv-sun)" opacity="0.9" />
         <path d="M126 126 q14 -16 28 0 z" fill="var(--tv-sun)" />
@@ -122,7 +122,8 @@ function Bankai({ big }: ArtProps) {
         <path d="M128 118 q26 14 20 54 q-10 -26 -24 -34z" fill="var(--tv-void)" opacity="0.85" className="tv-tatter" />
         <Head cy={74} />
         <path d="M82 66 q18 -24 36 -2 q-4 -8 -10 -4 q-4 -8 -12 -2 q-6 -4 -14 8z" fill="var(--tv-orange)" />
-        <path d="M90 78 q6 -4 10 0 M110 78 q-6 -4 -10 0" stroke="var(--tv-ink)" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <g fill="var(--tv-ink)"><ellipse cx="92" cy="77" rx="2.6" ry="3.6" /><ellipse cx="108" cy="77" rx="2.6" ry="3.6" /></g>
+        <path d="M94 86 h12" stroke="var(--tv-ink)" strokeWidth="1.6" strokeLinecap="round" />
         {/* black blade */}
         <path d="M120 110 L182 40" stroke="var(--tv-void)" strokeWidth="7" strokeLinecap="round" fill="none" />
         <path d="M120 110 L182 40" stroke="var(--tv-reiatsu)" strokeWidth="2" strokeLinecap="round" fill="none" className="tv-flicker" />
@@ -152,7 +153,8 @@ function Haki({ big }: ArtProps) {
         <path d="M62 120 q-24 6 -28 34 q12 -16 30 -18z" fill="var(--tv-cloth-light)" opacity="0.9" />
         <Head cy={70} r={19} />
         <path d="M80 60 q20 -20 40 0 q-6 -14 -20 -14 q-14 0 -20 14z" fill="var(--tv-hair-grey)" />
-        <path d="M86 74 q7 -5 12 0 M114 74 q-7 -5 -12 0" stroke="var(--tv-ink)" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <g fill="var(--tv-ink)"><ellipse cx="91" cy="73" rx="2.6" ry="3.4" /><ellipse cx="109" cy="73" rx="2.6" ry="3.4" /></g>
+        <path d="M93 83 h14" stroke="var(--tv-ink)" strokeWidth="1.8" strokeLinecap="round" />
         <path d="M84 62 q8 -4 16 0 M116 62 q-8 -4 -16 0" stroke="var(--tv-scar)" strokeWidth="2" fill="none" />
         {/* fist forward */}
         <circle cx="140" cy="108" r="16" fill="var(--tv-skin)" className="tv-punch" />
@@ -175,8 +177,9 @@ function Rasenshuriken({ big }: ArtProps) {
         <Head cy={74} />
         <path d="M80 66 q20 -26 40 -2 q-6 -6 -10 -2 q-6 -8 -14 -2 q-8 -4 -16 6z" fill="var(--tv-blond)" />
         <rect x="80" y="60" width="40" height="7" rx="2" fill="var(--tv-metal)" />
-        <path d="M90 80 q6 -4 10 0 M110 80 q-6 -4 -10 0" stroke="var(--tv-ink)" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M88 88 h6 M106 88 h6" stroke="var(--tv-ink)" strokeWidth="1" opacity="0.5" />
+        <g fill="var(--tv-ink)"><ellipse cx="92" cy="78" rx="2.6" ry="3.6" /><ellipse cx="108" cy="78" rx="2.6" ry="3.6" /></g>
+        <path d="M94 87 h12" stroke="var(--tv-ink)" strokeWidth="1.6" strokeLinecap="round" />
+        <path d="M84 82 h7 M109 82 h7" stroke="var(--tv-ink)" strokeWidth="1" opacity="0.45" />
         {/* raised arm */}
         <path d="M120 108 L150 66" stroke="var(--tv-skin)" strokeWidth="8" strokeLinecap="round" fill="none" />
       </g>
@@ -221,7 +224,7 @@ function Doujutsu({ big }: ArtProps) {
         <circle key={r} cx="124" cy="92" r={r} fill="none" stroke="var(--tv-void)" strokeWidth="1.2" opacity="0.7" className="tv-pulse" style={{ animationDelay: `${i * 0.25}s` }} />
       ))}
       <circle cx="124" cy="92" r="2.5" fill="var(--tv-void)" />
-      <path d="M60 112 q40 16 80 0" stroke="var(--tv-ink)" strokeWidth="2" fill="none" opacity="0.4" />
+      <path d="M90 118 h20" stroke="var(--tv-ink)" strokeWidth="2" fill="none" opacity="0.45" strokeLinecap="round" />
       {big && (
         <text x="100" y="188" textAnchor="middle" fontSize="12" fill="var(--tv-sharingan)" fontFamily="monospace">写輪眼 → 輪廻眼</text>
       )}
@@ -247,7 +250,7 @@ function Gojo({ big }: ArtProps) {
         {/* blindfold */}
         <rect x="80" y="70" width="40" height="11" rx="4" fill="var(--tv-void)" className="tv-flicker" />
         <path d="M80 75 H120" stroke="var(--tv-six-eyes)" strokeWidth="1.2" opacity="0.7" className="tv-trace" />
-        <path d="M88 90 q12 6 24 0" stroke="var(--tv-ink)" strokeWidth="1.6" fill="none" opacity="0.5" />
+        <path d="M94 90 h12" stroke="var(--tv-ink)" strokeWidth="1.6" fill="none" opacity="0.6" strokeLinecap="round" />
         {/* infinity palm */}
         <path d="M128 116 L162 100" stroke="var(--tv-skin)" strokeWidth="8" strokeLinecap="round" fill="none" />
       </g>
@@ -277,7 +280,8 @@ function WaterBreathing({ big }: ArtProps) {
         <Head cy={74} />
         <path d="M80 66 q20 -24 40 -2 q-8 -14 -20 -14 q-14 0 -20 16z" fill="var(--tv-maroon)" />
         <path d="M84 60 q16 -6 32 0" stroke="var(--tv-scar)" strokeWidth="3" fill="none" />
-        <path d="M90 80 q6 -4 10 0 M110 80 q-6 -4 -10 0" stroke="var(--tv-ink)" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <g fill="var(--tv-ink)"><ellipse cx="92" cy="78" rx="2.6" ry="3.6" /><ellipse cx="108" cy="78" rx="2.6" ry="3.6" /></g>
+        <path d="M94 87 h12" stroke="var(--tv-ink)" strokeWidth="1.6" strokeLinecap="round" />
         <path d="M122 110 L176 52" stroke="var(--tv-metal)" strokeWidth="5" strokeLinecap="round" fill="none" />
       </g>
       <path d="M30 150 q56 -46 140 -104" fill="none" stroke="var(--tv-water)" strokeWidth="4" strokeLinecap="round" className="tv-trace" />
@@ -312,7 +316,8 @@ function Haikyuu({ big }: ArtProps) {
         <path d="M96 74 q18 4 22 30 q3 18 4 26 h-52 q1 -8 4 -26 q4 -26 22 -30z" fill="var(--tv-orange)" />
         <ellipse cx="96" cy="58" rx="13" ry="15" fill="var(--tv-skin)" />
         <path d="M82 52 q14 -22 28 -2 q-4 -8 -8 -6 q-6 -8 -12 -2 q-6 -2 -8 10z" fill="var(--tv-orange-hair)" />
-        <path d="M88 58 q5 -4 8 0 M104 58 q-5 -4 -8 0" stroke="var(--tv-ink)" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        <g fill="var(--tv-ink)"><ellipse cx="90" cy="57" rx="2.4" ry="3.2" /><ellipse cx="103" cy="57" rx="2.4" ry="3.2" /></g>
+        <path d="M92 65 q5 4 9 0" stroke="var(--tv-ink)" strokeWidth="1.6" fill="none" strokeLinecap="round" />
         {/* swinging arm */}
         <path d="M112 86 L146 46" stroke="var(--tv-skin)" strokeWidth="7" strokeLinecap="round" fill="none" />
         {/* legs tucked */}
