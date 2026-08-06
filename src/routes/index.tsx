@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { TechniqueVault } from "@/components/portfolio/TechniqueVault";
-import { HeroDoodles } from "@/components/portfolio/HeroDoodles";
 import { AskAbhishek } from "@/components/portfolio/AskAbhishek";
 import { GithubLive } from "@/components/portfolio/GithubLive";
 import { ProjectModal, type Project } from "@/components/portfolio/ProjectModal";
@@ -57,7 +56,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground grain">
+    <div id="top" className="min-h-screen bg-background text-foreground">
+      <div className="film-grain" aria-hidden="true" />
       <CursorGlow />
       <Nav />
       <Hero />
@@ -111,7 +111,6 @@ function Hero() {
         </Suspense>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/10 to-background pointer-events-none" />
       </div>
-      <HeroDoodles />
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-32 pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center">
         <div className="max-w-4xl">
