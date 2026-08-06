@@ -9,12 +9,12 @@ function apply(light: boolean) {
 }
 
 /** Full-bleed banner that drops/rises over the page during the swap. */
-function playBanner(label: string) {
+function playBanner(label: string, fromRight: boolean) {
   if (typeof document === "undefined") return;
   if (document.documentElement.dataset["reduceMotion"] === "true") return;
   if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
   const el = document.createElement("div");
-  el.className = "theme-banner";
+  el.className = fromRight ? "theme-banner from-right" : "theme-banner";
   el.textContent = label;
   document.body.appendChild(el);
   window.setTimeout(() => el.remove(), 700);
@@ -40,9 +40,9 @@ export function useTheme() {
       localStorage.setItem(KEY, next ? "light" : "dark");
     };
 
-    playBanner(next ? "daylight mode" : "night mode");
-    // dark → light drops from the top, light → dark rises from the bottom
-    document.documentElement.classList.toggle("theme-sweep-up", !next);
+    // dark → light wipes left→right, light → dark wipes right→left
+    playBanner(next ? "daylight mode" : "night mode", !next);
+    document.documentElement.classList.toggle("theme-sweep-left", !next);
 
     const startVT = (document as Document & {
       startViewTransition?: (cb: () => void) => { finished: Promise<void> };
