@@ -262,7 +262,7 @@ html.theme-sweep-left::view-transition-new(root) { animation: theme-wipe-left 0.
 html[data-reduce-motion="true"] .theme-banner { display: none; }
 
 /* ---------- film grain ---------- */
-.grain {
+.film-grain {
   position: fixed;
   inset: -150%;
   z-index: 60;
@@ -279,7 +279,7 @@ html[data-reduce-motion="true"] .theme-banner { display: none; }
   80% { transform: translate(3%, 1%); }
   100% { transform: translate(0, 0); }
 }
-html[data-reduce-motion="true"] .grain { animation: none !important; }
+html[data-reduce-motion="true"] .film-grain { animation: none !important; }
 
 /* ---------- anime reel ---------- */
 .reel-card { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease; }
