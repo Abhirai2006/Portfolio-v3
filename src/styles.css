@@ -222,14 +222,14 @@ html[data-reduce-motion="true"] .marquee { animation: none !important; }
 /* ---------- theme sweep transition ---------- */
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 ::view-transition-old(root) { z-index: 1; }
-::view-transition-new(root) { z-index: 2; animation: theme-drop 0.62s cubic-bezier(0.76, 0, 0.24, 1) both; }
-@keyframes theme-drop {
-  from { clip-path: inset(0 0 100% 0); }
+::view-transition-new(root) { z-index: 2; animation: theme-wipe-right 0.62s cubic-bezier(0.76, 0, 0.24, 1) both; }
+@keyframes theme-wipe-right {
+  from { clip-path: inset(0 100% 0 0); }
   to { clip-path: inset(0 0 0 0); }
 }
-html.theme-sweep-up::view-transition-new(root) { animation: theme-rise 0.62s cubic-bezier(0.76, 0, 0.24, 1) both; }
-@keyframes theme-rise {
-  from { clip-path: inset(100% 0 0 0); }
+html.theme-sweep-left::view-transition-new(root) { animation: theme-wipe-left 0.62s cubic-bezier(0.76, 0, 0.24, 1) both; }
+@keyframes theme-wipe-left {
+  from { clip-path: inset(0 0 0 100%); }
   to { clip-path: inset(0 0 0 0); }
 }
 .theme-banner {
@@ -249,9 +249,39 @@ html.theme-sweep-up::view-transition-new(root) { animation: theme-rise 0.62s cub
   animation: theme-banner 0.62s cubic-bezier(0.76, 0, 0.24, 1) both;
 }
 @keyframes theme-banner {
-  0% { clip-path: inset(0 0 100% 0); opacity: 1; }
+  0% { clip-path: inset(0 100% 0 0); opacity: 1; }
+  45% { clip-path: inset(0 0 0 0); opacity: 1; }
+  100% { clip-path: inset(0 0 0 0); opacity: 0; }
+}
+.theme-banner.from-right { animation-name: theme-banner-left; }
+@keyframes theme-banner-left {
+  0% { clip-path: inset(0 0 0 100%); opacity: 1; }
   45% { clip-path: inset(0 0 0 0); opacity: 1; }
   100% { clip-path: inset(0 0 0 0); opacity: 0; }
 }
 html[data-reduce-motion="true"] .theme-banner { display: none; }
+
+/* ---------- film grain ---------- */
+.grain {
+  position: fixed;
+  inset: -150%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  animation: grain-shift 0.7s steps(1) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -2%); }
+  80% { transform: translate(3%, 1%); }
+  100% { transform: translate(0, 0); }
+}
+html[data-reduce-motion="true"] .grain { animation: none !important; }
+
+/* ---------- anime reel ---------- */
+.reel-card { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease; }
+.reel-card:hover { transform: translateY(-6px) scale(1.015); }
 
