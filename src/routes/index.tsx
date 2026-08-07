@@ -12,6 +12,7 @@ import { WordReveal } from "@/components/motion/word-reveal";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
+import { hireMailto } from "@/lib/contact";
 import { TextEffect } from "@/components/motion/text-effect";
 import { InfiniteSlider } from "@/components/motion/infinite-slider";
 import { Cursor } from "@/components/motion/cursor";
