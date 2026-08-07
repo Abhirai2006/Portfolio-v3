@@ -10,13 +10,17 @@ A scroll-driven, 3D-accented personal portfolio for **Abhishek Rai A** (B.E. in 
 
 ## Highlights
 
-- **Cinematic hero scene** — React Three Fiber torus-knot with a mouse-reactive particle field and animated cursor glow.
-- **Chapter-based storytelling** — Origin, Arsenal, Live Code, Projects, Anime Shelf, Contact.
-- **Live GitHub activity** — real repos, language breakdown, and a daily contribution heatmap pulled from the GitHub REST API.
-- **Interactive project gallery** — modal case studies with image carousels, terminal previews for console apps, and direct links to live sites.
-- **Ask Abhishek** — an AI assistant grounded in resume context, with an optional Anime Mode easter egg (Gen Z tone, references from the actual anime shelf).
+- **Cinematic hero scene** — React Three Fiber torus-knot with a mouse-reactive particle field, cursor glow, and a spotlight-mask portrait reveal.
+- **Chapter-based storytelling** — Origin, Power Levels, Live Code, Arsenal, Ask Abhishek, Anime Shelf, Contact.
+- **Live GitHub activity** — real repos, language breakdown, and a daily contribution heatmap pulled from the GitHub REST API (10-minute server cache).
+- **Interactive project gallery** — modal case studies with image carousels, terminal previews for console apps, magnetic "Open" cursor, MagicCard spotlight hover, and direct links to live sites.
+- **Ask Abhishek** — a streaming AI assistant (SSE, token-by-token) grounded in a resume + lifestyle context dump, with an optional Anime Mode easter egg (Gen Z tone, references drawn only from the shelf on the site).
+- **The Reel** — an opt-in anime section with real hover-preview video clips and a shared-element morph into a full-screen stage.
+- **Light / dark theme** — toggle in the top nav with a horizontal wipe transition (View Transitions API).
+- **Motion system** — Dock navigation, magnetic buttons, odometer counters, infinite slider, border trails, word-by-word headline reveals, and an animated film-grain overlay.
+- **Direct hiring path** — "Hire me" opens a pre-filled email (subject + body) instead of dumping the visitor at a form.
 - **Privacy-aware contact block** — email and phone are obfuscated in source and revealed on demand.
-- **Fully responsive** — mobile, tablet, and desktop layouts, plus a PWA manifest and custom favicon.
+- **Accessible + responsive** — ARIA labels throughout, reduced-motion support, and mobile / tablet / desktop layouts plus a PWA manifest and custom favicon.
 
 ## Screens
 
@@ -61,19 +65,25 @@ src/
     __root.tsx              Root layout, fonts, favicon, manifest, SEO
     index.tsx               Full single-page portfolio (chapters 01–07)
     api/
-      chat.ts               Ask Abhishek — POST endpoint, Lovable AI Gateway
+      chat.ts               Ask Abhishek — POST endpoint, SSE streaming via Lovable AI Gateway
   components/portfolio/
-    Nav.tsx                 Sticky navigation with Hire Me CTA
+    Nav.tsx                 Sticky navigation with theme toggle + Hire Me CTA
     HeroScene.tsx           R3F torus-knot + particle field
+    SpotlightPortrait.tsx   Cursor-following mask reveal on the portrait
     CursorGlow.tsx          Mouse-reactive radial glow (desktop only)
     GithubLive.tsx          Live repos + language stats
     ContributionHeatmap.tsx GitHub-style daily commit grid
+    MagicCard.tsx           Spotlight-on-hover card wrapper
     ProjectModal.tsx        Case-study modal with carousel + terminal snippets
-    AskAbhishek.tsx         Chat UI with Anime Mode toggle
+    AskAbhishek.tsx         Streaming chat UI with Anime Mode toggle
+    TechniqueVault.tsx      "The Reel" — anime video clips + shared-element stage
+    ThemeToggle.tsx         Light/dark switch with wipe transition
+  components/motion/        Reusable primitives: dock, magnetic, animated-number,
+                            border-trail, infinite-slider, text effects, word-reveal
   lib/
     github.functions.ts     TanStack server functions for GitHub data
   integrations/supabase/    Auto-generated Lovable Cloud client + middleware
-  styles.css                Tailwind v4 theme (Navy / White / Emerald / Red)
+  styles.css                Tailwind v4 theme (Navy / White / Emerald / Red), light + dark
 ```
 
 ## Local development
@@ -107,9 +117,10 @@ Never expose `LOVABLE_API_KEY` to the client — it is only read inside server r
 
 1. Accepts `{ messages, animeMode }` from the client.
 2. Trims history to the last 12 turns and validates roles/lengths.
-3. Injects a resume-grounded system prompt (plus an Anime Mode addon when enabled).
-4. Calls `https://ai.gateway.lovable.dev/v1/chat/completions` with `google/gemini-3.6-flash`.
-5. Surfaces rate limits (429) and credit exhaustion (402) as friendly errors.
+3. Injects a resume- and lifestyle-grounded system prompt (plus an Anime Mode addon when enabled).
+4. Calls `https://ai.gateway.lovable.dev/v1/chat/completions` with `google/gemini-3.6-flash` and `stream: true`.
+5. Pipes the upstream SSE stream straight to the browser, so answers type out token by token.
+6. Surfaces rate limits (429) and credit exhaustion (402) as friendly errors.
 
 Anime Mode is off by default. It is a subtle personality layer — factual answers stay intact; a single `// side note` line adds a paraphrased anime reference drawn only from the shelf shown on the site.
 
