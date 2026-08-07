@@ -12,6 +12,7 @@ import { WordReveal } from "@/components/motion/word-reveal";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
+import { hireMailto } from "@/lib/contact";
 import { TextEffect } from "@/components/motion/text-effect";
 import { InfiniteSlider } from "@/components/motion/infinite-slider";
 import { Cursor } from "@/components/motion/cursor";
@@ -143,7 +144,8 @@ function Hero() {
             </Magnetic>
             <Magnetic intensity={0.25} range={140}>
               <a
-                href="#contact"
+                href={hireMailto}
+                aria-label="Email Abhishek about a role"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary transition"
               >
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-300 group-hover:translate-x-0" aria-hidden="true" />

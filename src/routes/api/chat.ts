@@ -163,6 +163,7 @@ export const Route = createFileRoute("/api/chat")({
           },
           body: JSON.stringify({
             model: "google/gemini-3.6-flash",
+            stream: true,
             messages: [
               { role: "system", content: BASE_PROMPT + (animeMode ? ANIME_ADDON : "") },
               ...messages,
@@ -178,11 +179,16 @@ export const Route = createFileRoute("/api/chat")({
           return Response.json({ error: "AI request failed." }, { status: 500 });
         }
 
-        const data = (await res.json()) as {
-          choices?: Array<{ message?: { content?: string } }>;
-        };
-        const reply = data.choices?.[0]?.message?.content?.trim() ?? "";
-        return Response.json({ reply });
+        // Pass the upstream SSE stream straight through so the client can
+        // render the reply token-by-token (typewriter effect).
+        return new Response(res.body, {
+          headers: {
+            "Content-Type": "text/event-stream",
+            "Cache-Control": "no-cache",
+            Connection: "keep-alive",
+            "X-Accel-Buffering": "no",
+          },
+        });
       },
     },
   },

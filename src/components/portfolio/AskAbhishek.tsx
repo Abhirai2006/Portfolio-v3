@@ -42,14 +42,66 @@ export function AskAbhishek() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: next, animeMode }),
       });
-      const data = (await res.json()) as { reply?: string; error?: string };
-      setMessages((m) => [
-        ...m,
-        {
-          role: "assistant",
-          content: data.reply ?? data.error ?? "Sorry — something went wrong.",
-        },
-      ]);
+      if (!res.ok || !res.body) {
+        let msg = "Sorry — something went wrong.";
+        try {
+          const err = (await res.json()) as { error?: string };
+          if (err.error) msg = err.error;
+        } catch {
+          /* non-JSON error body */
+        }
+        setMessages((m) => [...m, { role: "assistant", content: msg }]);
+        return;
+      }
+
+      // Stream Server-Sent Events and append each delta to the last message.
+      setMessages((m) => [...m, { role: "assistant", content: "" }]);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = "";
+      let got = false;
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const lines = buf.split("\n");
+        buf = lines.pop() ?? "";
+        for (const line of lines) {
+          const t = line.trim();
+          if (!t.startsWith("data:")) continue;
+          const payload = t.slice(5).trim();
+          if (!payload || payload === "[DONE]") continue;
+          try {
+            const ev = JSON.parse(payload) as {
+              choices?: Array<{ delta?: { content?: string } }>;
+            };
+            const delta = ev.choices?.[0]?.delta?.content;
+            if (delta) {
+              got = true;
+              setMessages((m) => {
+                const copy = [...m];
+                const last = copy[copy.length - 1];
+                if (last && last.role === "assistant") {
+                  copy[copy.length - 1] = { ...last, content: last.content + delta };
+                }
+                return copy;
+              });
+            }
+          } catch {
+            /* partial frame — ignore */
+          }
+        }
+      }
+      if (!got) {
+        setMessages((m) => {
+          const copy = [...m];
+          const last = copy[copy.length - 1];
+          if (last && last.role === "assistant" && !last.content) {
+            copy[copy.length - 1] = { ...last, content: "Sorry — no reply came through. Try again." };
+          }
+          return copy;
+        });
+      }
     } catch {
       setMessages((m) => [...m, { role: "assistant", content: "Network error. Try again." }]);
     } finally {
