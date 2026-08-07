@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import { hireMailto } from "@/lib/contact";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +25,8 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <ThemeToggle compact />
           <a
-            href="#contact"
+            href={hireMailto}
+            aria-label="Email Abhishek about a role"
             className="rounded-full border border-primary/60 text-primary px-4 py-1.5 text-xs font-semibold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
           >
             Hire me →
