@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Nav } from "@/components/portfolio/Nav";
 import { TechniqueVault } from "@/components/portfolio/TechniqueVault";
@@ -13,21 +13,15 @@ import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatedNumber } from "@/components/motion/animated-number";
 import { hireMailto } from "@/lib/contact";
+import { PROJECTS } from "@/lib/projects";
+import { CommandPalette } from "@/components/portfolio/CommandPalette";
+import { track, observeSections } from "@/lib/analytics";
 import { TextEffect } from "@/components/motion/text-effect";
 import { InfiniteSlider } from "@/components/motion/infinite-slider";
 import { Cursor } from "@/components/motion/cursor";
 import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
 import portrait from "@/assets/abhishek-portrait.jpg.asset.json";
-import muse1 from "@/assets/projects/muse-1.png.asset.json";
 
-import muse2 from "@/assets/projects/muse-2.png.asset.json";
-import muse3 from "@/assets/projects/muse-3.png.asset.json";
-import sort1 from "@/assets/projects/sort-1.png.asset.json";
-import sort2 from "@/assets/projects/sort-2.png.asset.json";
-import sort3 from "@/assets/projects/sort-3.png.asset.json";
-import bs1 from "@/assets/projects/bs-1.png.asset.json";
-import bs2 from "@/assets/projects/bs-2.png.asset.json";
-import bs3 from "@/assets/projects/bs-3.png.asset.json";
 
 const HeroScene = lazy(() =>
   import("@/components/portfolio/HeroScene").then((m) => ({ default: m.HeroScene })),
@@ -50,12 +44,20 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://portfolio-abhirai2006.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://portfolio-abhirai2006.lovable.app/" }],
   }),
   component: Index,
 });
 
+const SECTION_IDS = ["origin", "arsenal", "github", "projects", "ask", "shelf", "contact"];
+
 function Index() {
+  useEffect(() => {
+    track("page_view", "home");
+    return observeSections(SECTION_IDS);
+  }, []);
   return (
     <div id="top" className="min-h-screen bg-background text-foreground">
       <div className="film-grain" aria-hidden="true" />
@@ -72,6 +74,7 @@ function Index() {
       <Contact />
       <Footer />
       <FloatingDock />
+      <CommandPalette />
     </div>
   );
 }
@@ -145,6 +148,7 @@ function Hero() {
             <Magnetic intensity={0.25} range={140}>
               <a
                 href={hireMailto}
+                onClick={() => track("cta_click", "hire_hero")}
                 aria-label="Email Abhishek about a role"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary transition"
               >
@@ -155,14 +159,13 @@ function Hero() {
               </a>
             </Magnetic>
             <Magnetic intensity={0.2} range={140}>
-              <a
-                href="https://drive.google.com/file/d/1OaO_nbj7jrrgJY1JGp3CSh798Vh_rf8w/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                to="/resume"
+                onClick={() => track("cta_click", "resume")}
                 className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium hover:border-primary hover:text-primary transition"
               >
-                Résumé <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
-              </a>
+                Résumé <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">→</span>
+              </Link>
             </Magnetic>
             <Magnetic intensity={0.2} range={140}>
               <a
@@ -388,61 +391,7 @@ function GithubSection() {
 
 /* ---------- PROJECTS ---------- */
 function Projects() {
-  const items: Project[] = [
-    {
-      title: "MUSE Students Voice",
-      tag: "Full-stack · SSR · Auth",
-      body: "USN-verified anonymous grievance platform. Peer-voted complaints auto-escalate into formal PDF letters. Supabase RLS + security-definer RPCs so identities stay server-side. Cloudflare Workers + TanStack Start + React 19. Seeded against 1,159+ verified student IDs.",
-      tags: ["TanStack Start", "Supabase RLS", "Cloudflare"],
-      images: [muse1.url, muse2.url, muse3.url],
-      live: "https://muse-studentsvoice.lovable.app/",
-      repo: "https://github.com/Abhirai2006",
-    },
-    {
-      title: "O(patience)",
-      tag: "Algorithms · React · TypeScript",
-      body: "Deep sorting playground — 5 algorithms, pointer flags, pitch-based sound mode, step-by-step export. Race Mode with live leaderboard, Quiz Mode, Sort DNA personality engine, embeddable /embed widget.",
-      tags: ["TypeScript", "React", "Motion"],
-      images: [sort1.url, sort2.url, sort3.url],
-      live: "https://sort-visually-abhirai2006.lovable.app/",
-      repo: "https://github.com/Abhirai2006",
-    },
-    {
-      title: "Binary Search Visualizer",
-      tag: "Vanilla JS · Glassmorphism",
-      body: "High-performance visualizer with real-time low/mid/high tracking and interactive audio feedback for each step. Demonstrates O(log n) narrowing visually.",
-      tags: ["JavaScript", "Netlify"],
-      images: [bs1.url, bs2.url, bs3.url],
-      live: "https://binarysearch-abhirai.netlify.app/",
-      repo: "https://github.com/Abhirai2006",
-    },
-    {
-      title: "C++ Console Mini-Suite",
-      tag: "OOP · Terminal",
-      body: "Tic-Tac-Toe (board logic, win/tie), Mini Banking System (validated deposit/withdraw), Rock-Paper-Scissors — reinforcing OOP, arrays, modular design.",
-      tags: ["C++", "OOP"],
-      images: [],
-      repo: "https://github.com/Abhirai2006",
-      snippet: {
-        title: "banking.cpp — sample session",
-        lines: [
-          "$ ./banking",
-          "── Mini Banking System ─────────────",
-          "1) Deposit   2) Withdraw   3) Balance   4) Exit",
-          "> 1",
-          "Amount: 2500",
-          "✔ Deposited ₹2500.  New balance: ₹7,300",
-          "> 2",
-          "Amount: 9000",
-          "✘ Insufficient funds. Balance: ₹7,300",
-          "> 3",
-          "Balance: ₹7,300",
-          "> 4",
-          "Session closed. Goodbye 👋",
-        ],
-      },
-    },
-  ];
+  const items: Project[] = PROJECTS;
   const [active, setActive] = useState<Project | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const [hoveringGrid, setHoveringGrid] = useState(false);
@@ -450,7 +399,8 @@ function Projects() {
     <section id="projects" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="04" title="The Arsenal" />
       <p className="mt-6 max-w-2xl text-muted-foreground">
-        Click any card to open the case file — screenshots, live site, and source code.
+        Click any card for screenshots and the live site — or read the full case study for the problem,
+        constraints, trade-offs and what actually shipped.
       </p>
       <div
         ref={gridRef}
@@ -464,29 +414,65 @@ function Projects() {
             style={{ animationDelay: `${idx * 0.7}s` }}
             className="breathe border border-border bg-card/50 hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all"
           >
-          <button
-            onClick={() => setActive(p)}
-            className="group block w-full h-full text-left p-6"
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-primary">{p.tag}</div>
-                <h3 className="mt-2 font-display text-2xl">{p.title}</h3>
+          <div className="group relative h-full">
+            <button
+              onClick={() => {
+                track("cta_click", `open_case_${p.title}`);
+                setActive(p);
+              }}
+              className="block w-full h-full text-left p-6"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-primary">{p.tag}</div>
+                  <h3 className="mt-2 font-display text-2xl">{p.title}</h3>
+                </div>
+                <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
               </div>
-              <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+
+              <dl className="mt-5 grid grid-cols-3 gap-3 border-y border-border/70 py-3">
+                {PROJECTS[idx]?.metrics.map((m) => (
+                  <div key={m.label}>
+                    <dt className="sr-only">{m.label}</dt>
+                    <dd className="font-display text-xl leading-none gold-text">{m.value}</dd>
+                    <dd className="mt-1 text-[10px] font-mono uppercase tracking-wide text-muted-foreground leading-tight">
+                      {m.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span key={t} className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2 py-0.5">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </button>
+            <div className="px-6 pb-6 -mt-1 flex flex-wrap items-center gap-4">
+              <Link
+                to="/projects/$slug"
+                params={{ slug: PROJECTS[idx]!.slug }}
+                onClick={() => track("cta_click", `read_case_${p.title}`)}
+                className="relative z-10 text-[10px] font-mono uppercase tracking-widest text-accent hover:text-primary underline underline-offset-4 md:cursor-pointer"
+              >
+                Read the full case study →
+              </Link>
+              {p.live && (
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative z-10 text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-primary md:cursor-pointer"
+                >
+                  Live site ↗
+                </a>
+              )}
             </div>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {p.tags.map((t) => (
-                <span key={t} className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground border border-border rounded-full px-2 py-0.5">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="mt-4 text-[10px] font-mono uppercase tracking-widest text-accent opacity-0 group-hover:opacity-100 transition-opacity">
-              open case file →
-            </div>
-          </button>
+          </div>
           </MagicCard>
         ))}
       </div>
