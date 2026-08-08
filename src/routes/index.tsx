@@ -414,13 +414,13 @@ function Projects() {
             style={{ animationDelay: `${idx * 0.7}s` }}
             className="breathe border border-border bg-card/50 hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all"
           >
-          <div className="group relative h-full">
+          <div className="group relative flex h-full flex-col">
             <button
               onClick={() => {
                 track("cta_click", `open_case_${p.title}`);
                 setActive(p);
               }}
-              className="block w-full h-full text-left p-6"
+              className="block w-full flex-1 text-left p-6"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -451,7 +451,7 @@ function Projects() {
                 ))}
               </div>
             </button>
-            <div className="px-6 pb-6 -mt-1 flex flex-wrap items-center gap-4">
+            <div className="mt-auto px-6 pb-6 pt-1 flex flex-wrap items-center gap-4">
               <Link
                 to="/projects/$slug"
                 params={{ slug: PROJECTS[idx]!.slug }}
