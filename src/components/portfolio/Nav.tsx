@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { ThemeToggle } from "./ThemeToggle";
 import { hireMailto } from "@/lib/contact";
 
@@ -23,6 +24,12 @@ export function Nav() {
           <span className="text-muted-foreground hidden sm:inline">— PORTFOLIO / 2026</span>
         </a>
         <div className="flex items-center gap-3">
+          <Link
+            to="/resume"
+            className="hidden sm:inline text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+          >
+            Résumé
+          </Link>
           <ThemeToggle compact />
           <a
             href={hireMailto}
