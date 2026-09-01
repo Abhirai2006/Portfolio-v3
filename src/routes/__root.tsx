@@ -87,8 +87,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Abhishek Rai A - ML Engineer · Live Projects" },
       { name: "twitter:description", content: "Portfolio of Abhishek Rai A — B.E. AI & ML student, Mysore. Live GitHub, in-browser ML demos, and an AI assistant trained on his resume." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/WnEj9NYqmeSnUGMo1uNMx5kMXRM2/social-images/social-1784799614745-Generated_Image_July_23,_2026_-_3_08PM.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/WnEj9NYqmeSnUGMo1uNMx5kMXRM2/social-images/social-1784799614745-Generated_Image_July_23,_2026_-_3_08PM.webp" },
     ],
     links: [
       {
@@ -101,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Allura&family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap",
       },
     ],
   }),
