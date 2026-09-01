@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      reviews: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          message: string
+          published: boolean
+          rating: number
+          role: string | null
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          message: string
+          published?: boolean
+          rating: number
+          role?: string | null
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          message?: string
+          published?: boolean
+          rating?: number
+          role?: string | null
+        }
+        Relationships: []
+      }
       site_events: {
         Row: {
           created_at: string
