@@ -57,6 +57,7 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-chapter: "Bebas Neue", "Space Grotesk", sans-serif;
+  --font-script: "Allura", "Caveat", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 

@@ -43,6 +43,13 @@ export function CommandPalette() {
         hint: "/resume",
         run: () => void navigate({ to: "/resume" }),
       },
+        {
+          id: "reviews",
+          label: "Leave a review",
+          group: "Pages",
+          hint: "/reviews",
+          run: () => void navigate({ to: "/reviews" }),
+        },
       ...PROJECTS.map((p) => ({
         id: `case-${p.slug}`,
         label: `${p.title} — case study`,
