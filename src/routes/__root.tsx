@@ -14,20 +14,43 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
+      <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-accent/15 blur-3xl" />
+      <div className="relative max-w-lg text-center">
+        <p className="font-mono text-xs uppercase tracking-[0.35em] text-muted-foreground">
+          error · 404
         </p>
-        <div className="mt-6">
+        <h1
+          className="mt-4 text-8xl md:text-9xl text-primary"
+          style={{ fontFamily: "Allura, cursive" }}
+        >
+          Lost?
+        </h1>
+        <p className="mt-2 text-2xl text-foreground" style={{ fontFamily: "Caveat, cursive" }}>
+          "Whatever you lose, you'll find it again.
+          <br />
+          But what you throw away you'll never get back."
+        </p>
+        <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          — Roronoa Zoro, One Piece
+        </p>
+        <p className="mt-6 text-sm text-muted-foreground">
+          This page wandered off the Grand Line. Let's get you back on course.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Go home
+            Sail back home
           </Link>
+          <button
+            onClick={() => window.history.back()}
+            className="inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:border-primary hover:text-primary"
+          >
+            Go back
+          </button>
         </div>
       </div>
     </div>
