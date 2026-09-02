@@ -569,6 +569,7 @@ function AnimeShelf() {
 /* ---------- CONTACT ---------- */
 function Contact() {
   const [revealed, setRevealed] = useState(false);
+  const [copied, setCopied] = useState(false);
   const parallax = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
   useEffect(() => {
@@ -624,11 +625,31 @@ function Contact() {
           </div>
           {revealed ? (
             <>
-              <div className="text-muted-foreground pl-2">
+              <div className="text-muted-foreground pl-2 flex items-center gap-2 flex-wrap">
                 →{" "}
                 <a href={`mailto:${email}`} className="text-primary hover:underline">
                   {email}
                 </a>
+                <button
+                  type="button"
+                  aria-label="Copy email address"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(email);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    } catch {
+                      /* clipboard unavailable */
+                    }
+                  }}
+                  className={`rounded border px-1.5 py-0.5 text-[10px] uppercase tracking-wider transition-colors ${
+                    copied
+                      ? "border-primary text-primary"
+                      : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                  }`}
+                >
+                  {copied ? "copied ✓" : "copy"}
+                </button>
               </div>
               <div className="text-muted-foreground pl-2">
                 →{" "}
