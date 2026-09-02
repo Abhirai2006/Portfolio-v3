@@ -569,6 +569,7 @@ function AnimeShelf() {
 /* ---------- CONTACT ---------- */
 function Contact() {
   const [revealed, setRevealed] = useState(false);
+  const [copied, setCopied] = useState(false);
   const parallax = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
   useEffect(() => {
