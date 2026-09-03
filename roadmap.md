@@ -1,0 +1,4 @@
+- [x] Review motion feedback and font package
+- [ ] Refresh Chapters 00–04 with internship and capstone data
+- [ ] Add restrained One Piece font accent
+- [ ] Align Ask Abhishek context and verify build
