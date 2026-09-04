@@ -30,6 +30,57 @@ export type ProjectEntry = Project & {
 
 export const PROJECTS: ProjectEntry[] = [
   {
+    slug: "customer-churn-intelligence-system",
+    title: "Customer Churn Intelligence System",
+    tag: "Capstone · Bluemind Solutions AI/ML Internship",
+    year: "2026",
+    body:
+      "End-to-end tabular ML system on IBM Telco Customer Churn: leak-free preprocessing, model comparison, stratified 5-fold CV, business-driven threshold selection, error analysis, and a Streamlit dashboard for single and batch scoring.",
+    tags: ["Python", "Scikit-learn", "XGBoost", "LightGBM", "Streamlit", "Pandas"],
+    metrics: [
+      { value: "0.849", label: "CV ROC-AUC" },
+      { value: "82%", label: "churner recall" },
+      { value: "~$179k", label: "est. annual recovery" },
+    ],
+    caseStudy: {
+      summary:
+        "A production-ready customer churn intelligence system completed as the capstone for Bluemind Solutions' Core AI & ML Internship.",
+      problem:
+        "Customer churn predictions are only useful when the evaluation is leak-free, the threshold reflects business cost, and the result can be used by someone beyond a notebook.",
+      constraints: [
+        "Build a leak-free pipeline on the IBM Telco Customer Churn dataset.",
+        "Compare multiple classical and gradient-boosted models with stratified 5-fold cross-validation.",
+        "Turn model output into an actionable workflow through a live dashboard for single and batch scoring.",
+      ],
+      built: [
+        "A preprocessing pipeline using Scikit-learn Pipelines and ColumnTransformer to keep transformations inside validation.",
+        "Model comparison across Logistic Regression, Random Forest, XGBoost and LightGBM.",
+        "Business-driven threshold tuning, error analysis and SHAP-style analysis for more useful decisions than a default 0.5 cutoff.",
+        "A Streamlit dashboard for single-customer and batch churn scoring.",
+      ],
+      tradeoffs: [
+        {
+          choice: "LightGBM as the final model",
+          why: "It delivered the strongest reported result in the comparison: 0.849 cross-validation ROC-AUC with 82% recall on churners.",
+        },
+        {
+          choice: "Threshold tuning instead of optimising accuracy alone",
+          why: "The system is meant to support retention decisions, so missing a likely churner matters more than maximising a generic accuracy score.",
+        },
+        {
+          choice: "Streamlit dashboard alongside the model pipeline",
+          why: "A usable scoring surface makes the capstone demonstrable as a shipped system, not only as an experiment.",
+        },
+      ],
+      outcome: [
+        "LightGBM reached 0.849 CV ROC-AUC and 82% recall on churners.",
+        "Estimated ~$179k in annual recoverable revenue from the business-oriented scoring setup.",
+        "Completed as a rigorous 4-week (~120 hour) Core AI & ML Internship capstone at Bluemind Solutions Pvt. Ltd.",
+      ],
+      stack: ["Python", "NumPy", "Pandas", "Scikit-learn", "XGBoost", "LightGBM", "Streamlit"],
+    },
+  },
+  {
     slug: "muse-students-voice",
     title: "MUSE Students Voice",
     tag: "Full-stack · SSR · Auth",

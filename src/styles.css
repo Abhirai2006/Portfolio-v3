@@ -5,10 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 @custom-variant light (&:is(html.light *));
 
-/*
- * Portfolio v3 — Noir & Gold
- * Near-black background, warm gold accents, off-white text.
- */
+/* Portfolio v3 — navy, electric blue, emerald, and red */
+
+@font-face {
+  font-family: "One Piece Accent";
+  src: url("/__l5e/assets-v1/053f8ee2-cc59-4cd8-b35b-a2cf3f47624d/one-piece-font.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -58,6 +63,7 @@
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-chapter: "Bebas Neue", "Space Grotesk", sans-serif;
   --font-script: "Allura", "Caveat", cursive;
+   --font-one-piece: "One Piece Accent", "Bebas Neue", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -155,6 +161,7 @@ html.light {
 
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
   .font-chapter { font-family: var(--font-chapter); letter-spacing: 0.08em; }
+  .font-one-piece { font-family: var(--font-one-piece); letter-spacing: 0.08em; }
   .font-mono { font-family: var(--font-mono); }
 
   ::selection { background: var(--gold); color: var(--ink); }
