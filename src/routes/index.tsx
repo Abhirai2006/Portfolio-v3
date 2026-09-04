@@ -16,7 +16,6 @@ import { hireMailto } from "@/lib/contact";
 import { PROJECTS } from "@/lib/projects";
 import { CommandPalette } from "@/components/portfolio/CommandPalette";
 import { track, observeSections } from "@/lib/analytics";
-import { TextEffect } from "@/components/motion/text-effect";
 import { InfiniteSlider } from "@/components/motion/infinite-slider";
 import { Cursor } from "@/components/motion/cursor";
 import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
@@ -34,13 +33,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Abhishek Rai A — B.E. AI & ML student, Mysore. Live GitHub, in-browser ML demos, and an AI assistant trained on his resume.",
+          "Portfolio of Abhishek Rai A — B.E. AI & ML student and Bluemind Solutions intern. Explore his Customer Churn Intelligence capstone, projects, and live GitHub activity.",
       },
       { property: "og:title", content: "Abhishek Rai A - ML Engineer · Live Projects" },
       {
         property: "og:description",
         content:
-          "Portfolio of Abhishek Rai A — B.E. AI & ML student, Mysore. Live GitHub, in-browser ML demos, and an AI assistant trained on his resume.",
+          "Portfolio of Abhishek Rai A — B.E. AI & ML student and Bluemind Solutions intern. Explore his Customer Churn Intelligence capstone, projects, and live GitHub activity.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -127,10 +126,10 @@ function Hero() {
             <span className="block gold-text">RAI A</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            Aspiring{" "}
-            <span className="text-foreground font-medium">Machine Learning Engineer</span>. B.E. AI &amp; ML at
-            Mysore University · <span className="text-primary font-mono">GPA 9.31/10</span> · currently building a hybrid
-            movie recommender on ~1M titles.
+             Aspiring{" "}
+             <span className="text-foreground font-medium">Machine Learning Engineer</span>. B.E. AI &amp; ML at
+             Mysore University · <span className="text-primary font-mono">GPA 9.31/10</span> · recently shipped a
+             production-ready Customer Churn Intelligence System with LightGBM and Streamlit.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -181,7 +180,7 @@ function Hero() {
 
           <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
             <Kpi k="9.31" sub="GPA / 10" />
-            <Kpi k="IV" sub="Semester" />
+             <Kpi k="V" sub="Semester" />
             <Kpi k="3+1" sub="Web apps · C++ suite" />
           </dl>
         </div>
@@ -263,18 +262,23 @@ function Origin() {
           </blockquote>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I'm <span className="text-foreground font-semibold">Abhishek Rai A</span>, a
-              <span className="text-foreground"> B.E. AI &amp; ML</span> student at
-              <span className="text-foreground"> Mysore University School of Engineering</span>. IV semester,
-              GPA <span className="text-primary font-mono">9.31/10</span>. Originally from Mangalore, now in Mysuru.
+               <span className="text-foreground font-semibold">Abhishek Rai A</span>, a
+               <span className="text-foreground"> B.E. AI &amp; ML</span> student at
+               <span className="text-foreground"> Mysore University School of Engineering</span>, entering my
+               fifth semester with a <span className="text-primary font-mono">9.31/10</span> GPA. Originally from
+               Mangalore, now in Mysuru.
             </p>
             <p>
-              I find patterns in mathematics and elegance in algorithms. I speak Tulu (mother tongue), Kannada, Hindi
-              and English. 53+ anime watched, One Piece bias. I vibe-code the web layer with AI copilots and put my head
-              down on the AI/ML core.
+               I find patterns in mathematics and elegance in algorithms. I speak Tulu (mother tongue), Kannada, Hindi
+               and English. I recently completed a rigorous 4-week, roughly 120-hour Core AI &amp; ML internship at
+               Bluemind Solutions Pvt. Ltd. (Aug–Sep 2026), where my capstone was a leak-free Customer Churn
+               Intelligence System on IBM Telco data.
             </p>
-            <p className="text-sm">
-              The plan: ship one small ML system every month. This portfolio is one of them.
+             <p className="text-sm">
+               I compared Logistic Regression, Random Forest, XGBoost and LightGBM, tuned the decision threshold for
+               business cost, added SHAP-style analysis, and shipped a live Streamlit dashboard. LightGBM reached
+               <span className="text-primary font-mono"> 0.849 CV ROC-AUC</span> and <span className="text-primary font-mono">82% recall</span> on churners, with an estimated
+               <span className="text-primary font-mono"> ~$179k</span> in annual recoverable revenue. One Piece bias included.
             </p>
             <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono uppercase tracking-widest">
               <Chip>Mysuru, Karnataka</Chip>
@@ -311,9 +315,9 @@ function NowBuilding() {
   return (
     <section className="mx-auto max-w-6xl px-6 pb-28">
       <div className="grid md:grid-cols-3 gap-4">
-        <StatusCard tag="Now building" title="Movie Rec System" body="Hybrid content-based + collaborative filtering on ~1M movies. Python · FastAPI · React · scikit-learn." />
+        <StatusCard tag="Recently shipped" title="Churn Intelligence" body="Bluemind Solutions capstone: leak-free tabular ML, business threshold tuning, and a live Streamlit dashboard on IBM Telco data." />
         <StatusCard tag="Learning" title="AI & Data Science" body="Ongoing certification via DRISHTI CPS (IIT Indore) — ML fundamentals, workflows, applied AI." />
-        <StatusCard tag="Up next" title="DevOps" body="Docker, CI/CD pipelines, and cloud deploys — so my ML systems actually ship, not just train." />
+        <StatusCard tag="Building foundations" title="PyTorch · FastAPI" body="Learning the next layer of ML engineering deliberately — strengthening model serving and deep-learning fundamentals without overclaiming production experience." />
       </div>
     </section>
   );
@@ -333,9 +337,9 @@ function StatusCard({ tag, title, body }: { tag: string; title: string; body: st
 /* ---------- ARSENAL ---------- */
 function Arsenal() {
   const tiers = [
-    { tier: "S", label: "Proficient", items: ["Python", "C", "C++", "Calculus", "Linear Algebra", "Git"] },
-    { tier: "A", label: "Intermediate", items: ["SQL", "DSA", "OOP", "DBMS", "Probability"] },
-    { tier: "B", label: "Learning", items: ["PyTorch", "scikit-learn", "FastAPI", "Discrete Math"] },
+    { tier: "S", label: "Proficient", items: ["Python", "NumPy", "Pandas", "Scikit-learn (Pipelines, ColumnTransformer, CV)", "Git", "Linear Algebra", "Calculus"] },
+    { tier: "A", label: "Intermediate", items: ["XGBoost", "LightGBM", "Matplotlib / Seaborn", "Streamlit", "SQL", "DSA", "Probability & Statistics"] },
+    { tier: "B", label: "Learning / Basics", items: ["PyTorch", "FastAPI", "Discrete Mathematics"] },
   ];
   return (
     <section id="arsenal" className="mx-auto max-w-6xl px-6 py-28">
@@ -526,6 +530,7 @@ function AnimeShelf() {
   return (
     <section id="shelf" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="06" title="Side Quest · Anime Shelf" />
+      <p className="mt-3 font-one-piece text-xl text-primary">Grand Line watch log</p>
       <div className="mt-6 grid grid-cols-3 gap-4 max-w-lg">
         <AnimatedKpi n={56} sub="Series + movies" />
         <AnimatedKpi n={3653} sub="Episodes" />

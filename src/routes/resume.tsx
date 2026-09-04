@@ -89,9 +89,9 @@ function ResumePage() {
 
         <Block title="Profile">
           <p className="text-muted-foreground leading-relaxed">
-            Fourth-semester B.E. student in Artificial Intelligence &amp; Machine Learning with a 9.31/10 GPA. Strong
-            mathematics and algorithms foundation, comfortable shipping full-stack products end to end. Currently
-            building a hybrid movie recommender over ~1M titles and moving into DevOps so the models actually deploy.
+             B.E. student in Artificial Intelligence &amp; Machine Learning entering the fifth semester with a 9.31/10 GPA.
+             Recently completed a rigorous 4-week (~120 hour) Core AI &amp; ML internship at Bluemind Solutions, where he
+             shipped a Customer Churn Intelligence System with LightGBM and Streamlit.
           </p>
         </Block>
 
@@ -99,7 +99,7 @@ function ResumePage() {
           <Row
             left="B.E. — Artificial Intelligence & Machine Learning"
             right="2024 — 2028"
-            sub="Mysore University School of Engineering · GPA 9.31 / 10 · IV Semester"
+             sub="Mysore University School of Engineering · GPA 9.31 / 10 · Entering V Semester"
           />
           <Row
             left="Certification — AI & Data Science"
@@ -109,9 +109,9 @@ function ResumePage() {
         </Block>
 
         <Block title="Skills">
-          <SkillRow label="Proficient" items={["Python", "C", "C++", "Calculus", "Linear Algebra", "Git"]} />
-          <SkillRow label="Intermediate" items={["SQL", "Data Structures & Algorithms", "OOP", "DBMS", "Probability"]} />
-          <SkillRow label="Learning" items={["PyTorch", "scikit-learn", "FastAPI", "Docker", "CI/CD", "Discrete Math"]} />
+           <SkillRow label="Proficient" items={["Python", "NumPy", "Pandas", "Scikit-learn (Pipelines, ColumnTransformer, CV)", "Git", "Linear Algebra", "Calculus"]} />
+           <SkillRow label="Intermediate" items={["XGBoost", "LightGBM", "Matplotlib / Seaborn", "Streamlit", "SQL", "DSA", "Probability & Statistics"]} />
+           <SkillRow label="Learning / Basics" items={["PyTorch", "FastAPI", "Discrete Mathematics"]} />
           <SkillRow label="Web" items={["React", "TypeScript", "TanStack Start", "Supabase", "Tailwind CSS"]} />
         </Block>
 

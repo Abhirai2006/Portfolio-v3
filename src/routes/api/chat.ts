@@ -11,27 +11,30 @@ Location: Mysuru, Karnataka (originally Mangalore)
 Languages spoken: Tulu (mother tongue), Kannada, Hindi, English
 
 EDUCATION
-- B.E. in Artificial Intelligence & Machine Learning, Mysore University School of Engineering (Sep 2024 – Present). GPA 9.31/10 as of 3rd semester. Currently in 4th semester.
+- B.E. in Artificial Intelligence & Machine Learning, Mysore University School of Engineering (Sep 2024 – Present). GPA 9.31/10. Entering 5th semester.
 - Ongoing AI & Data Science certification, DRISHTI CPS (Technology Innovation Hub of IIT Indore), via Intellipaat.
 - PUC (PCMB) at Gopalaswamy Independent PU College, Mysore (2022–2024) — 90.15%.
 - SSLC at Gopalaswamy Shishuvihara High School (until 2022) — 95%.
 
+INTERNSHIP
+- Core AI & ML Intern, Bluemind Solutions Pvt. Ltd. (Aug–Sep 2026) — completed a rigorous 4-week (~120 hour) internship.
+- Capstone: Customer Churn Intelligence System on IBM Telco Customer Churn data. Built a leak-free preprocessing pipeline, compared Logistic Regression, Random Forest, XGBoost and LightGBM, tuned the threshold for business cost, added SHAP-style analysis, and shipped a live Streamlit dashboard for single and batch scoring.
+- Final model: LightGBM with 0.849 cross-validation ROC-AUC and 82% recall on churners; estimated ~$179k annual recoverable revenue.
+
 SHIPPED PROJECTS
-1. MUSE Students Voice — anonymous USN-verified campus grievance platform; peer-voted complaints auto-escalate into formal PDF letters to the Director and Vice Chancellor. Supabase Row Level Security, sanitized views, security-definer RPCs so author identities never leave the server. SSR on Cloudflare Workers with TanStack Start and React 19. Seeded against 1,159+ verified student IDs.
-2. O(patience) — interactive sorting-algorithm playground (Bubble, Selection, Insertion, Merge, Quick). Pointer flags, sound mode, step-by-step export, Race Mode (5 algorithms racing with live leaderboard), Quiz Mode (identify-the-sort game), Sort DNA (behavior-based personality engine), embeddable /embed widget.
-3. Binary Search Visualizer — vanilla JS, glassmorphism, real-time low/mid/high tracking, audio feedback, demonstrates O(log n).
-4. C++ Console Mini-Projects — Tic-Tac-Toe, Rock-Paper-Scissors, Mini Banking System with input validation.
-5. Currently building: Movie Recommendation System — hybrid content-based + collaborative filtering on ~1M movies (Python, FastAPI, React, ML).
+1. Customer Churn Intelligence System — Bluemind Solutions AI/ML internship capstone; IBM Telco data, leak-free pipeline, model comparison, business threshold tuning, SHAP-style analysis and Streamlit dashboard. LightGBM: 0.849 CV ROC-AUC, 82% churner recall, estimated ~$179k annual recoverable revenue.
+2. MUSE Students Voice — anonymous USN-verified campus grievance platform; peer-voted complaints auto-escalate into formal PDF letters to the Director and Vice Chancellor. Lovable Cloud row-level security, sanitized views, security-definer RPCs so author identities never leave the server. SSR on Cloudflare Workers with TanStack Start and React 19. Seeded against 1,159+ verified student IDs.
+3. O(patience) — interactive sorting visualizer (Bubble, Selection, Insertion, Merge, Quick). Pointer flags, sound mode, step-by-step export, Race Mode, Quiz Mode, Sort DNA and an embeddable /embed widget.
+4. Binary Search Visualizer — vanilla JS, glassmorphism, real-time low/mid/high tracking, audio feedback, demonstrates O(log n).
+5. C++ Console Mini-Projects — Tic-Tac-Toe, Rock-Paper-Scissors, Mini Banking System with input validation.
 
 SKILLS
-- Programming: C, C++, Python, SQL
-- Web: HTML, CSS, JavaScript, React, TanStack Start, Cloudflare Workers, Vercel, Netlify, Replit
-- CS Fundamentals: Data Structures & Algorithms, OOP, DBMS
-- Math: Linear Algebra, Calculus, Discrete Mathematics, Probability & Statistics
-- Learning: PyTorch, scikit-learn, FastAPI
+- Proficient: Python, NumPy, Pandas, Scikit-learn (Pipelines, ColumnTransformer, CV), Git, Linear Algebra, Calculus
+- Intermediate: XGBoost, LightGBM, Matplotlib / Seaborn, Streamlit, SQL, DSA, Probability & Statistics
+- Learning / Basics: PyTorch, FastAPI, Discrete Mathematics
 
 INTERESTS
-- 53+ anime series watched (~3,600+ episodes). One Piece is his all-time favorite. Currently watching Frieren: Beyond Journey's End.
+- 56 anime series + movies watched (3,653 episodes listed on the portfolio). One Piece is his all-time favorite. Currently watching Frieren: Beyond Journey's End.
 - Vibe-coder: focuses on AI/ML fundamentals and uses AI copilots to move fast on web scaffolding.
 - Motto: "Building cool stuff — one algorithm at a time."
 
