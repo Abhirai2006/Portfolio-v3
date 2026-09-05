@@ -79,7 +79,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      record_site_visit: { Args: { p_session_id: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never
