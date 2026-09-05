@@ -76,7 +76,12 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      site_visitor_total: {
+        Row: {
+          total: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       record_site_visit: { Args: { p_session_id: string }; Returns: number }
