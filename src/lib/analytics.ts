@@ -35,6 +35,16 @@ export function track(name: EventName, label: string) {
     .then(() => undefined, () => undefined);
 }
 
+/** Records one homepage visitor per browser session and returns the live total. */
+export async function recordVisit() {
+  if (typeof window === "undefined" || !sessionId) return null;
+  const { data, error } = await supabase.rpc("record_site_visit", {
+    p_session_id: sessionId,
+  });
+  if (error) return null;
+  return typeof data === "number" ? data : null;
+}
+
 /** Observes elements with an id and reports the first time each scrolls into view. */
 export function observeSections(ids: string[]) {
   if (typeof window === "undefined") return;

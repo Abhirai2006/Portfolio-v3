@@ -1,4 +1,7 @@
 - [x] Review motion feedback and font package
-- [ ] Refresh Chapters 00–04 with internship and capstone data
-- [ ] Add restrained One Piece font accent
-- [ ] Align Ask Abhishek context and verify build
+- [x] Refresh Chapters 00–04 with internship and capstone data
+- [x] Add restrained One Piece font accent
+- [x] Align Ask Abhishek context with the current resume and verify content
+- [x] Add a genuine, session-deduplicated live visitor total
+- [x] Refresh README with current features, architecture, setup, and screenshots
+- [ ] Run final preview verification after the next content update

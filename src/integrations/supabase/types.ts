@@ -74,12 +74,42 @@ export type Database = {
         }
         Relationships: []
       }
+      site_visitor_sessions: {
+        Row: {
+          created_at: string
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          session_id?: string
+        }
+        Relationships: []
+      }
+      site_visitor_totals: {
+        Row: {
+          id: number
+          total: number
+        }
+        Insert: {
+          id: number
+          total?: number
+        }
+        Update: {
+          id?: number
+          total?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      record_site_visit: { Args: { p_session_id: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never
