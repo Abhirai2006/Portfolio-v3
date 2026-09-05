@@ -15,7 +15,7 @@ import { AnimatedNumber } from "@/components/motion/animated-number";
 import { hireMailto } from "@/lib/contact";
 import { PROJECTS } from "@/lib/projects";
 import { CommandPalette } from "@/components/portfolio/CommandPalette";
-import { track, observeSections } from "@/lib/analytics";
+import { track, observeSections, recordVisit } from "@/lib/analytics";
 import { InfiniteSlider } from "@/components/motion/infinite-slider";
 import { Cursor } from "@/components/motion/cursor";
 import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
@@ -53,8 +53,11 @@ export const Route = createFileRoute("/")({
 const SECTION_IDS = ["origin", "arsenal", "github", "projects", "ask", "shelf", "contact"];
 
 function Index() {
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+
   useEffect(() => {
     track("page_view", "home");
+    void recordVisit().then(setVisitorCount);
     return observeSections(SECTION_IDS);
   }, []);
   return (
@@ -62,7 +65,7 @@ function Index() {
       <div className="film-grain" aria-hidden="true" />
       <CursorGlow />
       <Nav />
-      <Hero />
+      <Hero visitorCount={visitorCount} />
       <Origin />
       <NowBuilding />
       <Arsenal />
@@ -105,7 +108,7 @@ function FloatingDock() {
 }
 
 /* ---------- HERO ---------- */
-function Hero() {
+function Hero({ visitorCount }: { visitorCount: number | null }) {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0 light:opacity-25">
@@ -178,10 +181,11 @@ function Hero() {
             </Magnetic>
           </div>
 
-          <dl className="mt-12 grid grid-cols-3 gap-4 max-w-lg">
+          <dl className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl">
             <Kpi k="9.31" sub="GPA / 10" />
              <Kpi k="V" sub="Semester" />
             <Kpi k="3+1" sub="Web apps · C++ suite" />
+            <VisitorKpi value={visitorCount} />
           </dl>
         </div>
         <div className="hidden lg:flex justify-center">
@@ -223,6 +227,19 @@ function AnimatedKpi({ n, sub }: { n: number; sub: string }) {
       </div>
       <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
         {sub}
+      </div>
+    </div>
+  );
+}
+
+function VisitorKpi({ value }: { value: number | null }) {
+  return (
+    <div aria-live="polite">
+      <div className="text-3xl font-display gold-text tabular-nums">
+        {value === null ? "—" : value.toLocaleString()}
+      </div>
+      <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
+        total visitors
       </div>
     </div>
   );
