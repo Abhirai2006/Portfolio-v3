@@ -74,14 +74,39 @@ export type Database = {
         }
         Relationships: []
       }
-    }
-    Views: {
-      site_visitor_total: {
+      site_visitor_sessions: {
         Row: {
-          total: number | null
+          created_at: string
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          session_id?: string
         }
         Relationships: []
       }
+      site_visitor_totals: {
+        Row: {
+          id: number
+          total: number
+        }
+        Insert: {
+          id: number
+          total?: number
+        }
+        Update: {
+          id?: number
+          total?: number
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
     }
     Functions: {
       record_site_visit: { Args: { p_session_id: string }; Returns: number }
