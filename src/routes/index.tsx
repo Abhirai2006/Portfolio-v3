@@ -17,7 +17,6 @@ import { PROJECTS } from "@/lib/projects";
 import { CommandPalette } from "@/components/portfolio/CommandPalette";
 import { track, observeSections, recordVisit } from "@/lib/analytics";
 import { InfiniteSlider } from "@/components/motion/infinite-slider";
-import { Cursor } from "@/components/motion/cursor";
 import { Home, User, Github, FolderGit2, Sparkles, Clapperboard, Mail } from "lucide-react";
 import portrait from "@/assets/abhishek-portrait.jpg.asset.json";
 
@@ -126,7 +125,7 @@ function Hero({ visitorCount }: { visitorCount: number | null }) {
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl font-semibold leading-[0.95] tracking-tight">
             <span className="block">ABHISHEK</span>
-            <span className="block gold-text">RAI A</span>
+             <span className="block gold-text">RAI A</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
              Aspiring{" "}
@@ -142,8 +141,8 @@ function Hero({ visitorCount }: { visitorCount: number | null }) {
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold transition"
               >
                 <span className="absolute inset-0 -translate-x-full bg-accent transition-transform duration-300 group-hover:translate-x-0" aria-hidden="true" />
-                <span className="relative flex items-center gap-2 group-hover:text-accent-foreground transition-colors">
-                  Ask my AI <span className="transition-transform duration-300 group-hover:translate-y-0.5">↴</span>
+                 <span className="relative flex items-center gap-2 group-hover:text-accent-foreground transition-colors">
+                   Ask Abhishek <span className="transition-transform duration-300 group-hover:translate-y-0.5">↴</span>
                 </span>
               </a>
             </Magnetic>
@@ -414,8 +413,6 @@ function GithubSection() {
 function Projects() {
   const items: Project[] = PROJECTS;
   const [active, setActive] = useState<Project | null>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [hoveringGrid, setHoveringGrid] = useState(false);
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-28">
       <ChapterHeader n="04" title="The Arsenal" />
@@ -424,10 +421,7 @@ function Projects() {
         constraints, trade-offs and what actually shipped.
       </p>
       <div
-        ref={gridRef}
-        onMouseEnter={() => setHoveringGrid(true)}
-        onMouseLeave={() => setHoveringGrid(false)}
-        className="mt-10 grid md:grid-cols-2 gap-4 md:[&_*]:cursor-none"
+        className="mt-10 grid gap-4 md:grid-cols-2"
       >
         {items.map((p, idx) => (
           <MagicCard
@@ -441,7 +435,8 @@ function Projects() {
                 track("cta_click", `open_case_${p.title}`);
                 setActive(p);
               }}
-              className="block w-full flex-1 text-left p-6"
+              aria-label={`Open ${p.title} project preview`}
+              className="block w-full flex-1 cursor-pointer p-6 text-left"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -498,12 +493,6 @@ function Projects() {
         ))}
       </div>
       {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
-      <Cursor visible={hoveringGrid && !active}>
-        <div className="rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-[10px] font-mono uppercase tracking-widest shadow-lg flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground animate-pulse" />
-          Open
-        </div>
-      </Cursor>
     </section>
   );
 }
