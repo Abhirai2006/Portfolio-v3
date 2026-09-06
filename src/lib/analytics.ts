@@ -42,7 +42,8 @@ export async function recordVisit() {
     p_session_id: sessionId,
   });
   if (error) return null;
-  return typeof data === "number" ? data : null;
+  const total = typeof data === "number" ? data : Number(data);
+  return Number.isFinite(total) ? total : null;
 }
 
 /** Observes elements with an id and reports the first time each scrolls into view. */

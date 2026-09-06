@@ -4,4 +4,6 @@
 - [x] Align Ask Abhishek context with the current resume and verify content
 - [x] Add a genuine, session-deduplicated live visitor total
 - [x] Refresh README with current features, architecture, setup, and screenshots
-- [ ] Run final preview verification after the next content update
+- [x] Add the portfolio URL to the résumé contact line and structured profile data
+- [x] Remove the detached project-card “OPEN” cursor label
+- [x] Run final preview verification after the next content update

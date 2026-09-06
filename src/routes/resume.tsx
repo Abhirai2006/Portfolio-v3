@@ -42,6 +42,7 @@ export const Route = createFileRoute("/resume")({
           alumniOf: { "@type": "CollegeOrUniversity", name: "Mysore University School of Engineering" },
           knowsLanguage: ["Tulu", "Kannada", "Hindi", "English"],
           sameAs: [
+             SITE,
             "https://github.com/Abhirai2006",
             "https://www.linkedin.com/in/abhishek-rai-a-00067238b/",
           ],
@@ -70,6 +71,7 @@ function ResumePage() {
             <a className="hover:text-primary" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             <a className="hover:text-primary" href="https://github.com/Abhirai2006" target="_blank" rel="noreferrer">github.com/Abhirai2006</a>
             <a className="hover:text-primary" href="https://www.linkedin.com/in/abhishek-rai-a-00067238b/" target="_blank" rel="noreferrer">linkedin.com/in/abhishek-rai-a</a>
+             <a className="text-primary hover:text-foreground" href={SITE} target="_blank" rel="noreferrer">portfolio-abhirai2006.lovable.app</a>
           </div>
           <div className="mt-6 flex flex-wrap gap-3 print:hidden">
             <a href={hireMailto} className="rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:opacity-90">

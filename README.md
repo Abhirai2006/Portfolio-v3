@@ -1,140 +1,135 @@
 # Abhishek Rai A — Portfolio
 
-A scroll-driven, 3D-accented personal portfolio for **Abhishek Rai A** (B.E. in AI & ML, University of Mysore). Built as a single narrative page with chapter-based sections, live GitHub activity, an interactive "Ask Abhishek" AI assistant, and real project case studies.
+The personal portfolio of **Abhishek Rai A**, a B.E. Artificial Intelligence & Machine Learning student at Mysore University School of Engineering. It is a recruiter-friendly, single-page story about shipped projects, current learning, live code activity, and the person behind the work.
 
-**Live:** https://portfolio-abhirai2006.lovable.app
+**Live site:** https://portfolio-abhirai2006.lovable.app  
+**Résumé:** https://portfolio-abhirai2006.lovable.app/resume
 
-![Hero](docs/screenshots/01-hero.png)
+![Portfolio hero](docs/screenshots/01-hero.png)
 
----
+## What is included
 
-## Highlights
-
-- **Cinematic hero scene** — React Three Fiber torus-knot with a mouse-reactive particle field, cursor glow, and a spotlight-mask portrait reveal.
-- **Chapter-based storytelling** — Origin, Power Levels, Live Code, Arsenal, Ask Abhishek, Anime Shelf, Contact.
-- **Live GitHub activity** — real repos, language breakdown, and a daily contribution heatmap pulled from the GitHub REST API (10-minute server cache).
-- **Interactive project gallery** — modal case studies with image carousels, terminal previews for console apps, magnetic "Open" cursor, MagicCard spotlight hover, and direct links to live sites.
-- **Ask Abhishek** — a streaming AI assistant (SSE, token-by-token) grounded in a resume + lifestyle context dump, with an optional Anime Mode easter egg (Gen Z tone, references drawn only from the shelf on the site).
-- **The Reel** — an opt-in anime section with real hover-preview video clips and a shared-element morph into a full-screen stage.
-- **Light / dark theme** — toggle in the top nav with a horizontal wipe transition (View Transitions API).
-- **Motion system** — Dock navigation, magnetic buttons, odometer counters, infinite slider, border trails, word-by-word headline reveals, and an animated film-grain overlay.
-- **Direct hiring path** — "Hire me" opens a pre-filled email (subject + body) instead of dumping the visitor at a form.
-- **Privacy-aware contact block** — email and phone are obfuscated in source and revealed on demand.
-- **Accessible + responsive** — ARIA labels throughout, reduced-motion support, and mobile / tablet / desktop layouts plus a PWA manifest and custom favicon.
+- **A clear first screen** with Abhishek's current focus, GPA, semester, honest project count, portrait, résumé link, GitHub link, and a pre-filled “Hire me” email path.
+- **Origin Story** with the Bluemind Solutions Core AI & ML internship, the Customer Churn Intelligence System capstone, and measurable model results.
+- **Power Levels** that separate proficient, intermediate, and learning skills instead of presenting every tool as production experience.
+- **Live Code Activity** with GitHub repository statistics, language mix, and a contribution heatmap fetched through cached server functions.
+- **The Arsenal** with project cards, accessible click-to-open previews, screenshot carousels, terminal output for the C++ suite, live-site links, repository links, and full case-study pages.
+- **Ask Abhishek** with streamed answers grounded in resume and lifestyle context. Anime Mode is optional and adds restrained Gen-Z phrasing and references from the anime shelf without changing factual answers.
+- **Anime Shelf / Technique Vault** that stays opt-in and uses the supplied real video clips, hover previews, and a full-screen viewing stage.
+- **Contact terminal** with the email and phone hidden until `cat contact.sh` is clicked, plus a copy-email action.
+- **Public résumé, reviews, thank-you, and custom 404 pages** with page-specific metadata and responsive layouts.
+- **A genuine visitor total** stored in Lovable Cloud. Each browser session is counted once, and the live distinct-session total is shown in the hero instead of using a placeholder number.
+- **Light and dark themes**, keyboard-friendly controls, ARIA labels, responsive layouts, and reduced-motion support.
 
 ## Screens
 
-**Chapter 03 — Live Code Activity** (live GitHub repos, language mix, contribution heatmap)
-
-![Live Code Activity section showing repo/star/follower counts, a contribution heatmap and language mix](docs/screenshots/03-live-code.png)
-
-**Chapter 04 — The Arsenal** (project case-study cards, each opens a modal)
-
-![The Arsenal section with cards for MUSE Students Voice, O(patience), Binary Search Visualizer and the C++ Console Mini-Suite](docs/screenshots/04-projects.png)
-
-| Chapter 02 — Power Levels | Chapter 05 — Ask Abhishek |
+| Hero | Power Levels |
 | --- | --- |
-| ![Skill tier list: proficient, intermediate, learning](docs/screenshots/02-power-levels.png) | ![Ask Abhishek chat panel with suggested questions and the Anime Mode toggle](docs/screenshots/06-ask.png) |
+| ![Hero](docs/screenshots/01-hero.png) | ![Power Levels](docs/screenshots/02-power-levels.png) |
 
-| Chapter 06 — Anime Shelf | Chapter 07 — Contact terminal |
+| Live Code Activity | The Arsenal |
 | --- | --- |
-| ![Anime shelf with 56 titles and 3,653 episodes](docs/screenshots/05-anime.png) | ![Contact section styled as a terminal with a reveal-email button](docs/screenshots/08-contact.png) |
+| ![GitHub activity and contribution heatmap](docs/screenshots/03-live-code.png) | ![Project case-study cards](docs/screenshots/04-projects.png) |
 
-**Responsive** — the same page on a 390px viewport:
+| Ask Abhishek | Anime Shelf |
+| --- | --- |
+| ![Ask Abhishek streaming chat](docs/screenshots/06-ask.png) | ![Anime shelf and watch log](docs/screenshots/05-anime.png) |
 
-<img src="docs/screenshots/07-mobile-hero.png" width="260" alt="Mobile hero view of the portfolio" />
+| Contact terminal | Mobile layout |
+| --- | --- |
+| ![Contact terminal](docs/screenshots/08-contact.png) | ![Portfolio on a 390px viewport](docs/screenshots/07-mobile-hero.png) |
 
-## Tech stack
+## Current project lineup
 
-| Layer            | Choice                                                        |
-| ---------------- | ------------------------------------------------------------- |
-| Framework        | TanStack Start (React 19, SSR on Cloudflare Workers)          |
-| Build            | Vite 8                                                        |
-| Styling          | Tailwind CSS v4 (OKLCH design tokens, `@tailwindcss/vite`)    |
-| 3D               | three.js via `@react-three/fiber` + `@react-three/drei`       |
-| Motion           | GSAP, Framer Motion, Lenis smooth scroll                      |
-| AI               | Lovable AI Gateway (`google/gemini-3.6-flash`)                |
-| Backend          | Lovable Cloud (Supabase) — auth-attacher middleware, RLS-ready |
-| Language         | TypeScript (strict)                                           |
+1. **Customer Churn Intelligence System** — leak-free preprocessing, model comparison, threshold tuning, error analysis, and a Streamlit scoring dashboard. Reported results: 0.849 cross-validation ROC-AUC, 82% churner recall, and an estimated ~$179k annual recoverable revenue.
+2. **MUSE Students Voice** — USN-verified anonymous grievance platform with database-level access control, peer escalation, and formal PDF letters.
+3. **O(patience)** — step-by-step sorting visualiser with five algorithms, pointer state, Race Mode, Quiz Mode, sound mode, and an embeddable view.
+4. **Binary Search Visualizer** — dependency-free JavaScript visualiser showing low/mid/high movement, logarithmic narrowing, and audio feedback.
+5. **C++ Console Mini-Suite** — Tic-Tac-Toe, a validated Mini Banking System, and Rock-Paper-Scissors using C++17 and standard-library concepts.
 
-## Project structure
+Each project has shared data in `src/lib/projects.ts`, a case-study page at `/projects/:slug`, and the right presentation for its format: screenshots for web projects and a terminal session for the C++ suite.
+
+## Technology
+
+| Area | Tools |
+| --- | --- |
+| Framework | TanStack Start, TanStack Router, React 19, TypeScript |
+| Build | Vite 8, Bun, ESLint, Prettier |
+| Styling | Tailwind CSS v4, OKLCH semantic tokens, responsive CSS |
+| 3D and motion | Three.js, React Three Fiber, Drei, Framer Motion, GSAP, Lenis |
+| UI patterns | Accessible dialogs, command palette, MagicCard spotlight, Apple-style dock, carousels |
+| Data and backend | Lovable Cloud, PostgreSQL, RLS, public server functions, anonymous analytics |
+| AI | Lovable AI Gateway with server-side SSE streaming |
+| External data | GitHub REST API with server-side caching |
+| Assets | CDN-hosted portfolio images, portrait, font, and anime media |
+
+## Architecture
 
 ```text
 src/
-  routes/
-    __root.tsx              Root layout, fonts, favicon, manifest, SEO
-    index.tsx               Full single-page portfolio (chapters 01–07)
-    api/
-      chat.ts               Ask Abhishek — POST endpoint, SSE streaming via Lovable AI Gateway
-  components/portfolio/
-    Nav.tsx                 Sticky navigation with theme toggle + Hire Me CTA
-    HeroScene.tsx           R3F torus-knot + particle field
-    SpotlightPortrait.tsx   Cursor-following mask reveal on the portrait
-    CursorGlow.tsx          Mouse-reactive radial glow (desktop only)
-    GithubLive.tsx          Live repos + language stats
-    ContributionHeatmap.tsx GitHub-style daily commit grid
-    MagicCard.tsx           Spotlight-on-hover card wrapper
-    ProjectModal.tsx        Case-study modal with carousel + terminal snippets
-    AskAbhishek.tsx         Streaming chat UI with Anime Mode toggle
-    TechniqueVault.tsx      "The Reel" — anime video clips + shared-element stage
-    ThemeToggle.tsx         Light/dark switch with wipe transition
-  components/motion/        Reusable primitives: dock, magnetic, animated-number,
-                            border-trail, infinite-slider, text effects, word-reveal
-  lib/
-    github.functions.ts     TanStack server functions for GitHub data
-  integrations/supabase/    Auto-generated Lovable Cloud client + middleware
-  styles.css                Tailwind v4 theme (Navy / White / Emerald / Red), light + dark
+├── routes/
+│   ├── __root.tsx                 Shared shell, metadata, fonts, 404, error boundary
+│   ├── index.tsx                  Main narrative portfolio chapters 00–07
+│   ├── resume.tsx                 Indexable, print-friendly résumé
+│   ├── reviews.tsx                Anonymous review form and published review wall
+│   ├── thank-you.tsx              Review submission confirmation
+│   ├── projects.$slug.tsx         Dynamic project case studies
+│   └── api/chat.ts                Validated public chat endpoint with SSE output
+├── components/
+│   ├── portfolio/                 Hero, GitHub, chat, anime, cards, navigation
+│   └── motion/                    Dock, magnetic buttons, counters, reveals, trails
+├── lib/
+│   ├── projects.ts                Shared project content, metrics, screenshots, links
+│   ├── analytics.ts               Anonymous events and session-deduplicated visitor count
+│   ├── github.functions.ts        Cached GitHub server functions
+│   └── contact.ts                 Obfuscated contact data and mail templates
+└── styles.css                     Theme tokens, font faces, motion, and accessibility rules
 ```
 
-## Local development
+### Data flow
 
-**Prerequisites:** [Bun](https://bun.sh) (recommended) or Node 20+.
+- The browser renders the public portfolio and uses the publishable backend client for anonymous review submissions and analytics.
+- The visitor counter calls `record_site_visit(session_id)`. A unique browser session is inserted once, and the database returns the current total. No visitor identity or contact data is stored.
+- GitHub data is loaded through TanStack server functions and cached for ten minutes so the public page stays fast and does not expose server-side implementation details.
+- Chat requests are validated at `/api/chat`, trimmed to the most recent turns, enriched with the portfolio context, and streamed back as Server-Sent Events.
+- Project content is local and typed, so cards, modals, case-study pages, and résumé entries stay aligned.
+
+## Run locally
+
+**Prerequisites:** Bun or Node 20+.
 
 ```bash
 bun install
-bun run dev          # http://localhost:8080
-bun run build        # production build
-bun run lint         # ESLint
-bun run format       # Prettier
+bun run dev       # http://localhost:8080
+bun run build     # production build
+bun run lint      # ESLint
+bun run format    # Prettier
 ```
 
-### Environment variables
+Lovable provisions the environment automatically. When running outside Lovable, configure the server-side AI key and the client/server backend variables in your local environment. Keep private keys server-only; never expose the AI gateway key through a `VITE_` variable or client bundle.
 
-Lovable auto-provisions the following. Only set them manually if running outside Lovable:
+## Ask Abhishek
 
-| Variable                         | Purpose                                          | Scope   |
-| -------------------------------- | ------------------------------------------------ | ------- |
-| `LOVABLE_API_KEY`                | Lovable AI Gateway (Ask Abhishek endpoint)       | Server  |
-| `VITE_SUPABASE_URL`              | Lovable Cloud project URL                        | Client  |
-| `VITE_SUPABASE_PUBLISHABLE_KEY`  | Lovable Cloud publishable key                    | Client  |
-| `VITE_SUPABASE_PROJECT_ID`       | Lovable Cloud project id                         | Client  |
+`src/routes/api/chat.ts` accepts a validated message list and an `animeMode` flag. It keeps the latest twelve turns, applies the resume and lifestyle context, calls the Lovable AI Gateway with streaming enabled, and forwards the SSE response to `AskAbhishek.tsx` for the typewriter effect. Anime Mode is off by default and may add one subtle reference from the watched list while preserving grounded answers.
 
-Never expose `LOVABLE_API_KEY` to the client — it is only read inside server route handlers.
+## Accessibility and performance
 
-## Ask Abhishek — how it works
-
-`src/routes/api/chat.ts` exposes a `POST /api/chat` handler that:
-
-1. Accepts `{ messages, animeMode }` from the client.
-2. Trims history to the last 12 turns and validates roles/lengths.
-3. Injects a resume- and lifestyle-grounded system prompt (plus an Anime Mode addon when enabled).
-4. Calls `https://ai.gateway.lovable.dev/v1/chat/completions` with `google/gemini-3.6-flash` and `stream: true`.
-5. Pipes the upstream SSE stream straight to the browser, so answers type out token by token.
-6. Surfaces rate limits (429) and credit exhaustion (402) as friendly errors.
-
-Anime Mode is off by default. It is a subtle personality layer — factual answers stay intact; a single `// side note` line adds a paraphrased anime reference drawn only from the shelf shown on the site.
+- Semantic headings, descriptive image alt text, keyboard-accessible dialogs and links, ARIA labels, and visible focus behavior.
+- `prefers-reduced-motion` disables long-running motion, marquee movement, theme banners, and decorative animation.
+- Heavy 3D code is lazy-loaded, screenshots and media are CDN-hosted, and GitHub requests are cached.
+- Public routes have unique titles, descriptions, canonical URLs, Open Graph/Twitter metadata, and structured profile data where appropriate.
 
 ## Deployment
 
-Deployed on Cloudflare Workers via Lovable. Push to `main` and Lovable rebuilds automatically. Stable URLs:
+The site is deployed through Lovable Cloud. The production URL is:
 
-- Production: `https://portfolio-abhirai2006.lovable.app`
-- Preview: `https://project--<id>-dev.lovable.app`
+https://portfolio-abhirai2006.lovable.app
 
-## Credits
+## Author
 
-Design, code, and content: **Abhishek Rai A** — [GitHub](https://github.com/Abhirai2006) · [LinkedIn](https://www.linkedin.com/in/abhishek-rai-a-00067238b)
+**Abhishek Rai A**  
+[Portfolio](https://portfolio-abhirai2006.lovable.app) · [GitHub](https://github.com/Abhirai2006) · [LinkedIn](https://www.linkedin.com/in/abhishek-rai-a-00067238b)
 
 ## License
 
-Source code released under the MIT License. Personal content (résumé text, portrait, project screenshots) is © Abhishek Rai A and not licensed for reuse.
+The source code is MIT-licensed. Personal content, résumé text, portrait, project screenshots, font, and anime media are © Abhishek Rai A and are not licensed for reuse.
