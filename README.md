@@ -1,4 +1,4 @@
-# Abhishek Rai A — Portfolio
+# Abhishek Rai A - Portfolio
 
 The personal portfolio of **Abhishek Rai A**, a B.E. Artificial Intelligence & Machine Learning student at Mysore University School of Engineering. It is a recruiter-friendly, single-page story about shipped projects, current learning, live code activity, and the person behind the work.
 
