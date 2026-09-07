@@ -41,11 +41,11 @@ The personal portfolio of **Abhishek Rai A**, a B.E. Artificial Intelligence & M
 
 ## Current project lineup
 
-1. **Customer Churn Intelligence System** — leak-free preprocessing, model comparison, threshold tuning, error analysis, and a Streamlit scoring dashboard. Reported results: 0.849 cross-validation ROC-AUC, 82% churner recall, and an estimated ~$179k annual recoverable revenue.
-2. **MUSE Students Voice** — USN-verified anonymous grievance platform with database-level access control, peer escalation, and formal PDF letters.
-3. **O(patience)** — step-by-step sorting visualiser with five algorithms, pointer state, Race Mode, Quiz Mode, sound mode, and an embeddable view.
-4. **Binary Search Visualizer** — dependency-free JavaScript visualiser showing low/mid/high movement, logarithmic narrowing, and audio feedback.
-5. **C++ Console Mini-Suite** — Tic-Tac-Toe, a validated Mini Banking System, and Rock-Paper-Scissors using C++17 and standard-library concepts.
+1. **Customer Churn Intelligence System** - leak-free preprocessing, model comparison, threshold tuning, error analysis, and a Streamlit scoring dashboard. Reported results: 0.849 cross-validation ROC-AUC, 82% churner recall, and an estimated ~$179k annual recoverable revenue.
+2. **MUSE Students Voice** - USN-verified anonymous grievance platform with database-level access control, peer escalation, and formal PDF letters.
+3. **O(patience)** - step-by-step sorting visualiser with five algorithms, pointer state, Race Mode, Quiz Mode, sound mode, and an embeddable view.
+4. **Binary Search Visualizer** - dependency-free JavaScript visualiser showing low/mid/high movement, logarithmic narrowing, and audio feedback.
+5. **C++ Console Mini-Suite** - Tic-Tac-Toe, a validated Mini Banking System, and Rock-Paper-Scissors using C++17 and standard-library concepts.
 
 Each project has shared data in `src/lib/projects.ts`, a case-study page at `/projects/:slug`, and the right presentation for its format: screenshots for web projects and a terminal session for the C++ suite.
 
