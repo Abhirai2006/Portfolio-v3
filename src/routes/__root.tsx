@@ -100,6 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "P2DRuJ18Vnv9ODoBdeu9g8N8WJNXvirCetwE0pxIK2Y" },
       { title: "Abhishek Rai A - ML Engineer · Live Projects" },
       { name: "description", content: "Portfolio of Abhishek Rai A — B.E. AI & ML student, Bluemind Solutions intern, and builder of a Customer Churn Intelligence System." },
       { name: "author", content: "Abhishek Rai A" },

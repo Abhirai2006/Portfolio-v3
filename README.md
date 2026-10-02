@@ -15,7 +15,7 @@ The personal portfolio of **Abhishek Rai A**, a B.E. Artificial Intelligence & M
 - **Live Code Activity** with GitHub repository statistics, language mix, and a contribution heatmap fetched through cached server functions.
 - **The Arsenal** with project cards, accessible click-to-open previews, screenshot carousels, terminal output for the C++ suite, live-site links, repository links, and full case-study pages.
 - **Ask Abhishek** with streamed answers grounded in resume and lifestyle context. Anime Mode is optional and adds restrained Gen-Z phrasing and references from the anime shelf without changing factual answers.
-- **Anime Shelf / Technique Vault** that stays opt-in and uses the supplied real video clips, hover previews, and a full-screen viewing stage.
+- **Anime side quest** linking to the standalone [Abhi's Anime Shelf](https://abhi-anime-atlas.lovable.app/), a scroll-driven 3D watch log with mood-based AI picks, random discovery, and visitor recommendations.
 - **Contact terminal** with the email and phone hidden until `cat contact.sh` is clicked, plus a copy-email action.
 - **Public résumé, reviews, thank-you, and custom 404 pages** with page-specific metadata and responsive layouts.
 - **A genuine visitor total** stored in Lovable Cloud. Each browser session is counted once, and the live distinct-session total is shown in the hero instead of using a placeholder number.
@@ -31,9 +31,9 @@ The personal portfolio of **Abhishek Rai A**, a B.E. Artificial Intelligence & M
 | --- | --- |
 | ![GitHub activity and contribution heatmap](docs/screenshots/03-live-code.png) | ![Project case-study cards](docs/screenshots/04-projects.png) |
 
-| Ask Abhishek | Anime Shelf |
+| Ask Abhishek | Anime side quest |
 | --- | --- |
-| ![Ask Abhishek streaming chat](docs/screenshots/06-ask.png) | ![Anime shelf and watch log](docs/screenshots/05-anime.png) |
+| ![Ask Abhishek streaming chat](docs/screenshots/06-ask.png) | ![Link to the standalone Anime Shelf](docs/screenshots/05-anime.png) |
 
 | Contact terminal | Mobile layout |
 | --- | --- |
@@ -61,7 +61,7 @@ Each project has shared data in `src/lib/projects.ts`, a case-study page at `/pr
 | Data and backend | Lovable Cloud, PostgreSQL, RLS, public server functions, anonymous analytics |
 | AI | Lovable AI Gateway with server-side SSE streaming |
 | External data | GitHub REST API with server-side caching |
-| Assets | CDN-hosted portfolio images, portrait, font, and anime media |
+| Assets | CDN-hosted portfolio images, portrait, and One Piece accent font |
 
 ## Architecture
 
