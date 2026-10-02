@@ -11,6 +11,16 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://portfolio-abhirai2006.lovable.app/reviews</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://portfolio-abhirai2006.lovable.app/projects/customer-churn-intelligence-system</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://portfolio-abhirai2006.lovable.app/projects/muse-students-voice</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
