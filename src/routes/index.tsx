@@ -10,7 +10,6 @@ import { SpotlightPortrait } from "@/components/portfolio/SpotlightPortrait";
 import { WordReveal } from "@/components/motion/word-reveal";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/motion/dock";
 import { Magnetic } from "@/components/motion/magnetic";
-import { AnimatedNumber } from "@/components/motion/animated-number";
 import { Cursor } from "@/components/motion/cursor";
 import { hireMailto } from "@/lib/contact";
 import { PROJECTS } from "@/lib/projects";
@@ -397,7 +396,7 @@ function GithubSection() {
 
 /* ---------- PROJECTS ---------- */
 function Projects() {
-  const items: Project[] = PROJECTS;
+  const items = PROJECTS;
   const [active, setActive] = useState<Project | null>(null);
   const [hoveringCard, setHoveringCard] = useState(false);
   return (
